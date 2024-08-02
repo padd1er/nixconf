@@ -25,7 +25,6 @@
       # mako
       dunst
       libnotify
-      # swww
       hyprpaper
       kitty
       rofi-wayland
@@ -37,6 +36,15 @@
       extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
     };
 
+    services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
+          user = "greeter";
+        };
+      };
+    };
   };
 }
 
