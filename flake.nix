@@ -14,9 +14,14 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wezterm = {
+      url = "github:wez/wezterm?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-cosmic, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-cosmic, wezterm, ... }@inputs: {
     nixosConfigurations = {
       thinkbook = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
@@ -27,7 +32,8 @@
               trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
             };
           }
-          nixos-cosmic.nixosModules.default
+          # nixos-cosmic.nixosModules.default
+	  # wezterm.packages.default
           ./hosts/thinkbook/configuration.nix
         ];
       };
