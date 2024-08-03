@@ -16,6 +16,7 @@
       fd
       fzf
       git
+      gnumake 
       gping
       just
       lazydocker
@@ -27,13 +28,13 @@
       procs
       ripgrep
       shfmt
+      sops
       starship
       stow
       vim
       wget
       yazi
       zellij
-      sops
     ];
     programs.fish.enable = true;
   };
