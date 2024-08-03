@@ -6,7 +6,7 @@
     service-ssh-agent.enable = lib.mkEnableOption "enables service-ssh-agent";
   };
 
-  config = lib.mkIf config.sys-fonts.enable {
+  config = lib.mkIf config.service-ssh-agent.enable {
     systemd.services.ssh-agent = {
       description = "System-wide SSH Agent";
       after = [ "network.target" ];
