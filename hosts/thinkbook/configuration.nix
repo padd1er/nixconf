@@ -19,7 +19,6 @@
       "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
       ./disko.nix
       ./extra.nix
-      # inputs.home-manager.nixosModules.default
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -29,6 +28,7 @@
   # boot.loader.grub.efiSupport = true;
 
   networking.hostName = "thinkbook-nixos"; # Define your hostname.
+
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
