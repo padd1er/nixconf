@@ -6,6 +6,8 @@
   };
 
   config = lib.mkIf config.sys-nixos.enable {
+    environment.shellAliases = lib.mkForce {};
+
     nix = {
       settings = {
         accept-flake-config = true;
