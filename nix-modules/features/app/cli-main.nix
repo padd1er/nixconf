@@ -33,6 +33,7 @@
       wget
       yazi
       zellij
+      sops
     ];
     programs.fish.enable = true;
   };
