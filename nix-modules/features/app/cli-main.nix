@@ -15,6 +15,7 @@
       eza
       fd
       fzf
+      gcc
       git
       gnumake 
       gping
@@ -25,7 +26,10 @@
       macchina
       mise
       neovim
+      nh
+      nodejs
       procs
+      python3
       ripgrep
       shfmt
       sops
@@ -35,6 +39,7 @@
       wget
       yazi
       zellij
+      zoxide
     ];
     programs.fish.enable = true;
   };
