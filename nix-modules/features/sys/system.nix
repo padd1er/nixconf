@@ -6,7 +6,7 @@
   };
 
   config = lib.mkIf config.sys-system.enable {
-    
+
     environment.sessionVariables = {
       FLAKE = "/root/nixconf";
     };
