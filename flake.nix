@@ -24,7 +24,7 @@
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-cosmic, wezterm, ... }@inputs: {
     nixosConfigurations = {
       thinkbook = nixpkgs.lib.nixosSystem {
-        extraSpecialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; };
         modules = [
           {
             nix.settings = {
