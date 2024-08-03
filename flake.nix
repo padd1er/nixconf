@@ -20,13 +20,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    wezterm = {
-      url = "github:wez/wezterm?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # wezterm = {
+    #   url = "github:wez/wezterm?dir=nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixos-cosmic, wezterm, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-stable, nixos-cosmic, ... }@inputs: {
     nixosConfigurations = {
       thinkbook = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
