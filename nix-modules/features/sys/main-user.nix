@@ -1,6 +1,8 @@
 { pkgs, lib, config, ... }:
 let
   cfg = config.sys-main-user;
+
+  homeDir = "/home/${cfg.username}";
 in
 {
   options.sys-main-user = {
@@ -23,8 +25,9 @@ in
 
     system.activationScripts.cloneRepo = {
       text = ''
+        homeDir='"${homeDir}"'
         if [ ! -d /home/${cfg.username}/nixconf ]; then
-          sudo -u ${cfg.username} git clone https://github.com/padd1er/nixconf.git /home/${cfg.username}/nixconf
+          runuser -l ${cfg.username} -c "git clone https://github.com/padd1er/nixconf.git ${homeDir}/nixconf"
         fi
       '';
     };
