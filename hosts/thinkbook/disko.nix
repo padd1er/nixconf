@@ -23,7 +23,7 @@
                 type = "luks";
                 name = "crypted-root";
                 settings.allowDiscards = true;
-                passwordFile = "/tmp/nix/root.key";
+                passwordFile = "/tmp/nix-root.key";
                 content = {
                   type = "filesystem";
                   format = "ext4";
@@ -47,7 +47,7 @@
                 type = "luks";
                 name = "crypted-home";
                 settings.allowDiscards = true;
-                passwordFile = "/tmp/nix/home.key";
+                passwordFile = "/tmp/nix-home.key";
                 content = {
                   type = "filesystem";
                   format = "ext4";
