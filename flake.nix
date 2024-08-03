@@ -5,10 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # home-manager = {
+    #   url = "github:nix-community/home-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
@@ -21,10 +21,10 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-cosmic, wezterm, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-stable, nixos-cosmic, wezterm, ... }@inputs: {
     nixosConfigurations = {
       thinkbook = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        extraSpecialArgs = { inherit inputs; };
         modules = [
           {
             nix.settings = {
@@ -33,8 +33,8 @@
             };
           }
           # nixos-cosmic.nixosModules.default
-	  # wezterm.packages.default
           ./hosts/thinkbook/configuration.nix
+          # inputs.home-manager.nixosModules.default
         ];
       };
       ugreen-vm = nixpkgs.lib.nixosSystem {

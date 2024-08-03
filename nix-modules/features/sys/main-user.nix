@@ -17,8 +17,16 @@ in
     users.users.${cfg.username} = {
       isNormalUser = true;
       createHome = true;
-      extraGroups = [ "wheel" "networkmanager" "sudo" "audio" "video" "input" ];
+      extraGroups = [ "wheel" "networkmanager" "sudo" "audio" "video" "input" "docker" ];
       shell = pkgs.fish;
+    };
+
+    system.activationScripts.cloneRepo = {
+      text = ''
+        if [ ! -d /home/${cfg.username}/nixconf ]; then
+          sudo -u ${cfg.username} git clone https://github.com/padd1er/nixconf.git /home/${cfg.username}/nixconf
+        fi
+      '';
     };
   };
 }
