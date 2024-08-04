@@ -7,6 +7,7 @@
 
   config = lib.mkIf config.sys-nixos.enable {
     environment.shellAliases = lib.mkForce {};
+    nixpkgs.config.allowUnfree = true;
 
     nix = {
       settings = {
