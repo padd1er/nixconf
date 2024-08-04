@@ -3,9 +3,9 @@
 {
   imports =
     [
-      ./terminal.nix
+      ./gui-main.nix
     ];
 
 
-  app-terminal.enable = lib.mkDefault true;
+  app-gui-main.enable = lib.mkDefault true;
 }
