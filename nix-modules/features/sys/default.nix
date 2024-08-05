@@ -1,22 +1,22 @@
-{ pkgs, lib, config, ... }:
+{ pkgs
+, lib
+, config
+, ...
+}:
 
 {
   imports =
     [
-      ./de-gnome.nix
-      ./de-kde.nix
-      ./de-xfce.nix
+      ./main-user.nix
       ./nixos.nix
       ./system.nix
       ./systemd.nix
     ];
 
-  sys-de-gnome.enable = lib.mkDefault false;
-  sys-de-kde.enable = lib.mkDefault false;
-  sys-de-xfce.enable = lib.mkDefault false;
-  sys-nixos.enable = lib.mkDefault true;
-  sys-system.enable = lib.mkDefault true;
-  sys-systemd.enable = lib.mkDefault true;
+  sys-nixos.enable = lib.mkDefault false;
+  sys-system.enable = lib.mkDefault false;
+  sys-systemd.enable = lib.mkDefault false;
+  sys-main-user.enable = lib.mkDefault false;
 }
 
 

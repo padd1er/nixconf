@@ -1,4 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ pkgs
+, lib
+, config
+, ...
+}:
 
 {
 
@@ -11,14 +15,18 @@
       atuin
       bat
       bottom
+      cargo
       delta
       eza
       fd
       fzf
       gcc
       git
-      gnumake 
+      gnugrep
+      gnumake
+      gnumake
       gping
+      jq
       just
       lazydocker
       lazygit
@@ -27,7 +35,10 @@
       mise
       neovim
       nh
+      ninja
       nodejs
+      openssl
+      pandoc
       procs
       python3
       ripgrep
@@ -35,10 +46,15 @@
       sops
       starship
       stow
+      stylua
+      tree-sitter
+      unzip
       vim
       wget
       yazi
       zellij
+      zip
+      zlib
       zoxide
     ];
     programs.fish.enable = true;

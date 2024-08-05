@@ -1,4 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ pkgs
+, lib
+, config
+, ...
+}:
 
 {
   options = {
@@ -6,7 +10,7 @@
   };
 
   config = lib.mkIf config.sys-nixos.enable {
-    environment.shellAliases = lib.mkForce {};
+    environment.shellAliases = lib.mkForce { };
     nixpkgs.config.allowUnfree = true;
 
     nix = {

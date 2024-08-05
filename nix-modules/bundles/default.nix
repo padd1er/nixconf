@@ -1,12 +1,15 @@
-{ pkgs, lib, config, ... }:
+{ pkgs
+, lib
+, config
+, ...
+}:
 
 {
   imports =
     [
       ../features/sys/default.nix
-      ../features/app/default-cli.nix
+      ../features/app/default.nix
       ../features/service/default.nix
-      ../features/sys/main-user.nix
     ];
 
   # battery
