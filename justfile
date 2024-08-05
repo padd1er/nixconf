@@ -1,5 +1,5 @@
 default:
-    echo 'Hello, world!'
+    just --list --unsorted
 
 up:
     nix flake update
