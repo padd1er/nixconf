@@ -36,6 +36,7 @@
       neovim
       ninja
       nix-output-monitor
+      nix-search-cli
       nodejs
       nvd
       openssl
