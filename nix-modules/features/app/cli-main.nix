@@ -34,9 +34,10 @@
       macchina
       mise
       neovim
-      nh
       ninja
+      nix-output-monitor
       nodejs
+      nvd
       openssl
       pandoc
       procs
