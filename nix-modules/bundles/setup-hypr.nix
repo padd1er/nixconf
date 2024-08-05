@@ -50,12 +50,7 @@
         vt = 7;
       };
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet \
-          --time \
-          --asterisks \
-          --cmd hyprland \
-          --theme \
-          border=magenta;text=lightgray;prompt=lightgreen;time=cyan;action=blue;button=yellow;container=black;input=lightgreen";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --cmd hyprland --debug /var/log/tuigreet.log --theme border=magenta;text=lightgray;prompt=lightgreen;time=cyan;action=blue;button=yellow;container=black;input=lightgreen";
         user = "greeter";
       };
     };
