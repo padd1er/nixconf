@@ -46,6 +46,18 @@
   services.greetd = {
     enable = true;
     settings = {
+      terminal = {
+        vt = 7;
+      };
+      theme = {
+        bg = "#232634";
+        fg = "#c6d0f5";
+        primary = "#f5bde6";
+        secondary = "#8caaee";
+        success = "#a6da95";
+        error = "#ed8796";
+        alert = "#eed49f";
+      };
       default_session = {
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --cmd hyprland";
         user = "greeter";
