@@ -1,12 +1,13 @@
 { pkgs
 , lib
 , config
+, inputs
 , ...
 }:
 
 let
   sysMainUserModule = ../../nix-modules/features/sys/main-user.nix;
-  sysMainUser = import sysMainUserModule { inherit pkgs lib config; };
+  sysMainUser = import sysMainUserModule { inherit pkgs lib config inputs; };
 
   userName = sysMainUser.username;
   homeDir = "/home/${userName}";
