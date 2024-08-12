@@ -27,11 +27,17 @@
               trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
             };
           }
-          # nixos-cosmic.nixosModules.default
           ./hosts/thinkbook/configuration.nix
-          # inputs.home-manager.nixosModules.default
         ];
       };
+
+      wsl-nixos = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/wsl/configuration.nix
+        ];
+      };
+
       ugreen-vm = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
