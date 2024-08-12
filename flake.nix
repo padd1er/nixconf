@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
     wezterm = {
       url = "github:wez/wezterm?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +35,13 @@
 
       wsl-nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
+        system = "x86_64-linux";
         modules = [
+          inputs.nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.05";
+            wsl.enable = true;
+          }
           ./hosts/wsl/configuration.nix
         ];
       };
