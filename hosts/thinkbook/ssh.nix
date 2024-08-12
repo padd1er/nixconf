@@ -11,6 +11,9 @@ let
   secretsFile = ../../secrets.yaml;
 in
 {
+  imports = [
+    ../../nix-modules/features/sys/main-user.nix
+  ];
   system.activationScripts.setupKey = {
     text = ''
           userName='"${userName}"'

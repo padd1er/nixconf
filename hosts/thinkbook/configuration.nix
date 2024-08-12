@@ -19,7 +19,6 @@
       "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
       ./disko.nix
       ./extra.nix
-      ../../nix-modules/features/sys/main-user.nix
       ./ssh.nix
     ];
 
