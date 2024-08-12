@@ -6,13 +6,16 @@
 }:
 
 let
-  userName = sys-main-user.username;
+  sysMainUserModule = ../../nix-modules/features/sys/main-user.nix;
+  sysMainUser = import sysMainUserModule { inherit pkgs lib config; };
+
+  userName = sysMainUser.username;
   homeDir = "/home/${userName}";
   secretsFile = ../../secrets.yaml;
 in
 {
   imports = [
-    ../../nix-modules/features/sys/main-user.nix
+    sysMainUserModule
   ];
   system.activationScripts.setupKey = {
     text = ''
