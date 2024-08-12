@@ -23,7 +23,6 @@
 
   sys-nixos.enable = lib.mkForce true;
   sys-system.enable = lib.mkForce true;
-  sys-systemd.enable = lib.mkDefault true;
 
   system.stateVersion = "24.05";
 }
