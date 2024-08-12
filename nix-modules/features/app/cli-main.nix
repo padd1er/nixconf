@@ -58,6 +58,7 @@
       zip
       zlib
       zoxide
+      libxml2
     ];
     programs.fish.enable = true;
   };
