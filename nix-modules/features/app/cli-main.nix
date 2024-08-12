@@ -29,6 +29,7 @@
       jq
       just
       lazydocker
+      file
       lazygit
       lf
       macchina
