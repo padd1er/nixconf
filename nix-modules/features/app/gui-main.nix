@@ -14,16 +14,17 @@
   config = lib.mkIf config.app-gui-main.enable {
     environment.systemPackages = with pkgs; [
       inputs.wezterm.packages.${pkgs.system}.default
-      firefox
-      google-chrome
       alacritty
-      flameshot
-      telegram-desktop
-      seafile-client
       bitwarden-desktop
+      firefox
+      flameshot
+      google-chrome
       keepassxc
-      slack
+      localsend
       obs-studio
+      seafile-client
+      slack
+      telegram-desktop
     ];
   };
 }
