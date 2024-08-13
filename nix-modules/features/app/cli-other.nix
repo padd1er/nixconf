@@ -12,6 +12,7 @@
 
   config = lib.mkIf config.app-cli-other.enable {
     environment.systemPackages = with pkgs; [
+      act
       dysk
       fselect
       grex
