@@ -17,12 +17,17 @@
   ];
 
   wsl.enable = true;
-  wsl.defaultUser = "nixos";
+  wsl.defaultUser = "skarbie";
 
   networking.hostName = "wsl-nixos";
 
   sys-nixos.enable = lib.mkForce true;
   sys-system.enable = lib.mkForce true;
+
+  sys-main-user = {
+    enable = true;
+    username = "skarbie";
+  };
 
   system.stateVersion = "24.05";
 }
