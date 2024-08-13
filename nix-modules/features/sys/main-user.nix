@@ -51,6 +51,9 @@ in
 
                   # Stow dotfiles
                   runuser -l ${cfg.username} -c "cd ${homeDir}/.dotfiles && make stowall"
+
+                  # Post commands
+                  runuser -l ${cfg.username} -c "bat cache --build"
                 fi
       '';
     };
