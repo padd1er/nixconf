@@ -19,6 +19,7 @@
       delta
       eza
       fd
+      file
       fzf
       gcc
       git
@@ -28,10 +29,11 @@
       gping
       jq
       just
+      killall
       lazydocker
-      file
       lazygit
       lf
+      libxml2
       macchina
       mise
       neovim
@@ -59,7 +61,6 @@
       zip
       zlib
       zoxide
-      libxml2
     ];
     programs.fish.enable = true;
   };
