@@ -37,7 +37,6 @@
       lua
       macchina
       mise
-      neovim
       ninja
       nix-output-monitor
       nix-search-cli
@@ -52,10 +51,7 @@
       sops
       starship
       stow
-      stylua
-      tree-sitter
       unzip
-      vim
       wget
       yazi
       zellij
