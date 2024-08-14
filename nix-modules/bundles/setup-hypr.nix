@@ -28,8 +28,10 @@
   };
 
   environment.systemPackages = with pkgs; [
-    qt5.wayland
-    qt6.wayland
+    libsForQt5.qt5.qtwayland
+    kdePackages.qtwayland
+    # qt5.wayland
+    # qt6.wayland
     kdePackages.polkit-kde-agent-1
     waybar
     # mako
