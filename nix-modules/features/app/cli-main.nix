@@ -34,6 +34,7 @@
       lazygit
       lf
       libxml2
+      lua
       macchina
       mise
       neovim
