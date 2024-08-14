@@ -28,8 +28,12 @@
   };
 
   environment.systemPackages = with pkgs; [
+    qt5.wayland
+    qt6.wayland
+    kdePackages.polkit-kde-agent-1
     waybar
     # mako
+    # swaync
     dunst
     libnotify
     hyprpaper
