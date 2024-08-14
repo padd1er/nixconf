@@ -1,7 +1,8 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }:
 
 {
@@ -12,26 +13,29 @@
   config = lib.mkIf config.app-neovim.enable {
 
     environment.systemPackages = with pkgs; [
-      neovim
-      stylua
-      tree-sitter
       bash-language-server
-      docker-compose-language-service
-      yaml-language-server
-      taplo
-      shfmt
-      shellcheck
-      ruff
-      pyright
-      prettierd
-      marksman
-      markdownlint-cli2
-      vimPlugins.vim-markdown-toc
-      lua-language-server
-      hadolint
-      dockerfile-language-server-nodejs
       black
-      rnix-lsp
+      docker-compose-language-service
+      dockerfile-language-server-nodejs
+      hadolint
+      lua-language-server
+      markdownlint-cli2
+      marksman
+      neovim
+      nixfmt-rfc-style
+      prettierd
+      pyright
+      ruff
+      shellcheck
+      shfmt
+      stylua
+      taplo
+      tree-sitter
+      vimPlugins.vim-markdown-toc
+      yaml-language-server
+      nodePackages.vscode-json-languageserver
+      eslint_d
+      nixd
     ];
   };
 }
