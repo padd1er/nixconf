@@ -1,7 +1,8 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }:
 
 {
@@ -48,9 +49,7 @@
     # system font
     fonts = {
       fontDir.enable = true;
-      packages = with pkgs; [
-        (nerdfonts.override { fonts = [ "Hack" ]; })
-      ];
+      packages = with pkgs; [ (nerdfonts.override { fonts = [ "Hack" ]; }) ];
       fontconfig = {
         enable = true;
         defaultFonts.monospace = [ "Hack Nerd Font Mono" ];
@@ -91,4 +90,3 @@
     };
   };
 }
-

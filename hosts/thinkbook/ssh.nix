@@ -1,13 +1,21 @@
-{ pkgs
-, lib
-, config
-, inputs
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
 }:
 
 let
   sysMainUserModule = ../../nix-modules/features/sys/main-user.nix;
-  sysMainUser = import sysMainUserModule { inherit pkgs lib config inputs; };
+  sysMainUser = import sysMainUserModule {
+    inherit
+      pkgs
+      lib
+      config
+      inputs
+      ;
+  };
 
   userName = config.sys-main-user.username;
   homeDir = "/home/${userName}";
@@ -15,9 +23,7 @@ let
   keyFile = "${homeDir}/.ssh/${userName}_at_thinkbook";
 in
 {
-  imports = [
-    sysMainUserModule
-  ];
+  imports = [ sysMainUserModule ];
   system.activationScripts.setupKey = {
     text = ''
           userName='"${userName}"'

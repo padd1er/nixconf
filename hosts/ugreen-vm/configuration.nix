@@ -1,11 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -62,14 +66,22 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.padd1er = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" "networkmanager" "docker" ];
+    extraGroups = [
+      "wheel"
+      "input"
+      "networkmanager"
+      "docker"
+    ];
     shell = pkgs.fish;
     useDefaultShell = true;
   };
 
   #nix.settings.experimental-features = "nix-command flakes";
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -132,9 +144,7 @@
   services.openssh.settings.PermitRootLogin = "yes";
 
   fonts.fontDir.enable = true;
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" ]; })
-  ];
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Hack" ]; }) ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -151,7 +161,6 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-
 
 # { pkgs, lib, ... }:
 #

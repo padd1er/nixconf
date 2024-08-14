@@ -1,8 +1,9 @@
-{ pkgs
-, lib
-, config
-, inputs
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
 }:
 
 let
@@ -12,8 +13,7 @@ let
   secretsFile = ../../../secrets.yaml;
 in
 {
-  imports = [
-  ];
+  imports = [ ];
   options.sys-main-user = {
     enable = lib.mkEnableOption "enable main-user module";
 
@@ -28,10 +28,17 @@ in
     users.users.${cfg.username} = {
       isNormalUser = true;
       createHome = true;
-      extraGroups = [ "wheel" "networkmanager" "sudo" "audio" "video" "input" "docker" ];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "sudo"
+        "audio"
+        "video"
+        "input"
+        "docker"
+      ];
       shell = pkgs.fish;
     };
-
 
     system.activationScripts.cloneRepo = {
       text = ''

@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 
 {
@@ -16,7 +17,6 @@
   sys-systemd.enable = lib.mkForce true;
   sys-main-user.enable = lib.mkForce true;
 
-
   environment.systemPackages = [
     #   pkgs.nix-ld-rs
     #   pkgs.nix-diff
@@ -25,5 +25,3 @@
   ];
 
 }
-
-

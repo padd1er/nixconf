@@ -1,7 +1,8 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }:
 
 {
@@ -18,7 +19,10 @@
         accept-flake-config = true;
         allow-dirty = true;
         auto-optimise-store = true;
-        experimental-features = [ "nix-command" "flakes" ];
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
         use-xdg-base-directories = true;
         warn-dirty = false;
       };
@@ -30,5 +34,3 @@
     };
   };
 }
-
-

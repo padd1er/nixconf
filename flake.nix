@@ -18,35 +18,45 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixos-cosmic, ... }@inputs: {
-    nixosConfigurations = {
-      thinkbook-nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          {
-            nix.settings = {
-              substituters = [ "https://cosmic.cachix.org/" ];
-              trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-            };
-          }
-          ./hosts/thinkbook/configuration.nix
-        ];
-      };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      nixos-cosmic,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = {
+        thinkbook-nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
+            ./hosts/thinkbook/configuration.nix
+          ];
+        };
 
-      wsl-nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/wsl/configuration.nix
-        ];
-      };
+        wsl-nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          system = "x86_64-linux";
+          modules = [ ./hosts/wsl/configuration.nix ];
+        };
 
-      ugreen-vm = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/ugreen-vm/configuration.nix
-        ];
+        ugreen-vm = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [ ./hosts/ugreen-vm/configuration.nix ];
+        };
       };
     };
-  };
 }

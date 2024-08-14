@@ -1,7 +1,8 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }:
 
 {
@@ -11,18 +12,21 @@
 
   config = lib.mkIf config.app-doas.enable {
 
-    environment.systemPackages = with pkgs; [
-      doas
-    ];
+    environment.systemPackages = with pkgs; [ doas ];
 
     security = {
       doas = {
         enable = true;
-        extraRules = [{
-          groups = [ "wheel" "sudo" ];
-          noPass = true;
-          keepEnv = true;
-        }];
+        extraRules = [
+          {
+            groups = [
+              "wheel"
+              "sudo"
+            ];
+            noPass = true;
+            keepEnv = true;
+          }
+        ];
       };
     };
   };

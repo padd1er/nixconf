@@ -1,14 +1,12 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }:
 
 {
-  imports =
-    [
-      ./default.nix
-    ];
+  imports = [ ./default.nix ];
 
   app-cli-other.enable = lib.mkForce true;
   app-gui-main.enable = lib.mkForce true;
@@ -23,13 +21,16 @@
   };
   services.displayManager.defaultSession = "gnome";
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-tour
-    gnome-connections
-    epiphany
-    geary
-    evince
-  ]);
+  environment.gnome.excludePackages = (
+    with pkgs;
+    [
+      gnome-tour
+      gnome-connections
+      epiphany
+      geary
+      evince
+    ]
+  );
 
   programs.dconf = {
     enable = true;

@@ -1,26 +1,22 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config
-, lib
-, pkgs
-, inputs
-, outputs
-, system
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  outputs,
+  system,
+  ...
 }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
-      ./disko.nix
-      ./extra.nix
-      ./ssh.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
+    ./disko.nix
+    ./extra.nix
+    ./ssh.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -29,7 +25,6 @@
   # boot.loader.grub.efiSupport = true;
 
   networking.hostName = "thinkbook-nixos"; # Define your hostname.
-
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -61,7 +56,6 @@
   #     tree
   #   ];
   # };
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

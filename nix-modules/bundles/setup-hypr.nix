@@ -1,14 +1,12 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }:
 
 {
-  imports =
-    [
-      ./default.nix
-    ];
+  imports = [ ./default.nix ];
 
   app-cli-other.enable = lib.mkForce true;
   app-gui-main.enable = lib.mkForce true;
@@ -62,5 +60,3 @@
     };
   };
 }
-
-

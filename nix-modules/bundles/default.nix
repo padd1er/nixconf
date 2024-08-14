@@ -1,16 +1,16 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }:
 
 {
-  imports =
-    [
-      ../features/sys/default.nix
-      ../features/app/default.nix
-      ../features/service/default.nix
-    ];
+  imports = [
+    ../features/sys/default.nix
+    ../features/app/default.nix
+    ../features/service/default.nix
+  ];
 
   # battery
   services.upower.enable = true;
