@@ -34,6 +34,10 @@
     waybar
     # mako
     # swaync
+    hyprlock
+    hyprpaper
+    hypridle
+    hyprcursor
     dunst
     libnotify
     hyprpaper

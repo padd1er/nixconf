@@ -8,8 +8,8 @@
 {
 
   imports = [
-    # and this below are custom
-    ../../nix-modules/bundles/setup-xfce.nix
+    # ../../nix-modules/bundles/setup-xfce.nix
+    ../../nix-modules/bundles/setup-hypr.nix
   ];
 
   sys-nixos.enable = lib.mkForce true;
