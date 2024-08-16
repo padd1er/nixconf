@@ -24,4 +24,13 @@
     #   pkgs.nix-health
   ];
 
+  # # Configure keymap in X11
+  # # services.xserver.enable = true;
+  # services.xserver.xkb.layout = "pl";
+  # services.xserver.xkb.variant = "basic";
+  # # services.xserver.xkb.model = "pc105";
+  # services.xserver.exportConfiguration = true;
+  # services.xserver.xkb.options = "lv3:ralt_switch,compose:ralt";
+  # programs.dconf.enable = false;
+  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 }
