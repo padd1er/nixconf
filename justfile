@@ -1,7 +1,13 @@
 default:
     just --list --unsorted
 
-up:
+backup:
+    cp flake.lock flake.lock-bak_$(date +'%Y-%m-%d_%H-%M-%S')
+
+revert:
+    mv "$(ls -1t flake.lock-bak* | head -n 1)" flake.lock
+
+update: backup
     nix flake update
 
 test:
