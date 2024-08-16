@@ -17,11 +17,15 @@
       black
       docker-compose-language-service
       dockerfile-language-server-nodejs
+      eslint_d
       hadolint
+      hyprls
       lua-language-server
+      luajitPackages.luarocks
       markdownlint-cli2
       marksman
       neovim
+      nixd
       nixfmt-rfc-style
       prettierd
       pyright
@@ -31,13 +35,10 @@
       stylua
       taplo
       tree-sitter
+      vimPlugins.nvim-treesitter-parsers.hyprlang
       vimPlugins.vim-markdown-toc
-      yaml-language-server
-      # nodePackages.vscode-json-languageserver
       vscode-langservers-extracted
-      eslint_d
-      nixd
-      luajitPackages.luarocks
+      yaml-language-server
     ];
 
     programs.neovim = {
