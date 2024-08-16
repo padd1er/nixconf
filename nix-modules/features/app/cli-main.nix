@@ -52,6 +52,7 @@
       sops
       starship
       stow
+      unar
       unzip
       wget
       yazi
