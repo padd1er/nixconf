@@ -33,9 +33,19 @@
       tree-sitter
       vimPlugins.vim-markdown-toc
       yaml-language-server
-      nodePackages.vscode-json-languageserver
+      # nodePackages.vscode-json-languageserver
+      vscode-langservers-extracted
       eslint_d
       nixd
+      luajitPackages.luarocks
     ];
+
+    programs.neovim = {
+      enable = true;
+      withNodeJs = true;
+      withPython3 = true;
+      withRuby = true;
+      defaultEditor = true;
+    };
   };
 }
