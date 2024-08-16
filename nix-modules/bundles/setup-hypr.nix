@@ -58,7 +58,8 @@
         vt = 7;
       };
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --cmd hyprland --debug /var/log/tuigreet.log --theme border=magenta;text=lightgray;prompt=lightgreen;time=cyan;action=blue;button=yellow;container=black;input=lightgreen";
+        # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --cmd hyprland --debug /var/log/tuigreet.log --theme border=magenta;text=lightgray;prompt=lightgreen;time=cyan;action=blue;button=yellow;container=black;input=lightgreen";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --cmd hyprland --debug /var/log/tuigreet.log --theme border=darkgray;text=white;prompt=lightgray;time=gray;action=cyan;button=lightyellow;container=black;input=lightgray";
         user = "greeter";
       };
     };
