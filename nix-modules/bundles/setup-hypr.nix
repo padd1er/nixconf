@@ -28,21 +28,29 @@
   environment.systemPackages = with pkgs; [
     libsForQt5.qt5.qtwayland
     kdePackages.qtwayland
-    # qt5.wayland
-    # qt6.wayland
     kdePackages.polkit-kde-agent-1
+    # -- bars
+    gbar
     waybar
+    ironbar
+    ags
+    # -- notifications
+    dunst
+    libnotify
     # mako
     # swaync
+    # -- applaunchers
+    rofi-wayland
+    # -- hypr apps
     hyprlock
     hyprpaper
     hypridle
     hyprcursor
-    dunst
-    libnotify
     hyprpaper
+    # -- other
     kitty
-    rofi-wayland
+    # -- system utils
+    brightnessctl
     wl-clipboard
   ];
 
