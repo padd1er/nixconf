@@ -1,7 +1,8 @@
 {
-  pkgs,
-  lib,
   config,
+  inputs,
+  lib,
+  pkgs,
   ...
 }:
 
@@ -17,7 +18,7 @@
       bat
       bottom
       cargo
-      delta
+      inputs.nixpkgs-stable.legacyPackages."${pkgs.system}".delta # NOTE: this is instead lf default rustdesk which is at 1.2.3 version and fails to build due to rust 1.80.0 https://github.com/NixOS/nixpkgs/issues/332957
       eza
       fd
       file
@@ -25,7 +26,6 @@
       gcc
       git
       gnugrep
-      gnumake
       gnumake
       gping
       jq
