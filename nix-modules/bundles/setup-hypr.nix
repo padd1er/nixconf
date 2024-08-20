@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 
@@ -26,9 +27,13 @@
   };
 
   environment.systemPackages = with pkgs; [
+    adwaita-qt
+    adwaita-qt6
+    libadwaita
     libsForQt5.qt5.qtwayland
     kdePackages.qtwayland
     kdePackages.polkit-kde-agent-1
+    xsettingsd
     # -- bars
     gbar
     waybar
@@ -41,18 +46,28 @@
     # swaync
     # -- applaunchers
     rofi-wayland
+    ulauncher
     # -- hypr apps
     hyprlock
     hyprpaper
     hypridle
     hyprcursor
     hyprpaper
+    # -- file managers
+    xfce.thunar
+    nautilus
+    sushi
+    nemo
+    kdePackages.dolphin
+    pcmanfm
     # -- other
-    kitty
+    dconf
     # -- system utils
     brightnessctl
     wl-clipboard
   ];
+
+  programs.dconf.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -72,4 +87,6 @@
       };
     };
   };
+
+  security.polkit.enable = true;
 }
