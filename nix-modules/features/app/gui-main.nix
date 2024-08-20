@@ -28,7 +28,15 @@
       telegram-desktop
       spotify
       rustdesk-flutter # NOTE: this is instead lf default rustdesk which is at 1.2.3 version and fails to build due to rust 1.80.0 https://github.com/NixOS/nixpkgs/issues/332957
-      # inputs.nixpkgs-stable.legacyPackages."${pkgs.system}".rustdesk
+      papirus-icon-theme
+      bibata-cursors
+      mpv
+      libreoffice-qt-fresh
+      flameshot
+      lutris
+      protonup-qt
+      steam
+      heroic
     ];
   };
 }
