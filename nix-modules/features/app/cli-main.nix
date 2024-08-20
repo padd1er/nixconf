@@ -60,6 +60,8 @@
       zip
       zlib
       zoxide
+      exiftool
+      gtrash
     ];
     programs.fish.enable = true;
   };
