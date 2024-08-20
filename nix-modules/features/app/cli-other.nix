@@ -23,6 +23,7 @@
       lemmeknow
       navi
       pastel
+      superfile # terminal
     ];
   };
 }
