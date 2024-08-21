@@ -11,7 +11,7 @@ let
 
   homeDir = "/home/${userName}";
   keyFile = "${homeDir}/.ssh/${userName}";
-  secretsFile = ../../../secrets.yaml;
+  secretsFile = ../../../../secrets.yaml;
 in
 {
   # TODO: think about how this can be abstracted to avoid boilerplate
