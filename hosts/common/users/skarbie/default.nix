@@ -11,7 +11,7 @@ let
 
   homeDir = "/home/${userName}";
   keyFile = "${homeDir}/.ssh/${userName}";
-  secretsFile = ../../../secrets.yaml;
+  secretsFile = ../../../../secrets.yaml;
 in
 {
   users.users.${userName} = {
@@ -29,7 +29,7 @@ in
     shell = pkgs.fish;
   };
 
-  system.userAactivationScripts.cloneRepo = {
+  system.userActivationScripts.cloneRepo = {
     text = ''
       secretsFile='"${secretsFile}"'
       homeDir='"${homeDir}"'
@@ -54,7 +54,7 @@ in
     '';
   };
 
-  system.userAactivationScripts.setSshKey = {
+  system.userActivationScripts.setSshKey = {
     text = ''
       userName='"${userName}"'
       secretsFile='"${secretsFile}"'
