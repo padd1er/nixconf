@@ -3,10 +3,10 @@
 
 {
   config,
-  lib,
-  pkgs,
   inputs,
+  lib,
   outputs,
+  pkgs,
   system,
   ...
 }:
@@ -14,21 +14,14 @@
 {
   imports = [
     inputs.nixos-wsl.nixosModules.default
-    ../../nix-modules/bundles/default.nix
+    ../common/core/default.nix
+    ../common/users/skarbie/default.nix
   ];
 
   wsl.enable = true;
   wsl.defaultUser = "skarbie";
 
   networking.hostName = "wsl-nixos";
-
-  sys-nixos.enable = lib.mkForce true;
-  sys-system.enable = lib.mkForce true;
-
-  sys-main-user = {
-    enable = true;
-    username = "skarbie";
-  };
 
   system.stateVersion = "24.05";
 }

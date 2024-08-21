@@ -1,0 +1,62 @@
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
+
+{
+  environment.systemPackages = with pkgs; [
+    atuin
+    bat
+    bottom
+    cargo
+    exiftool
+    eza
+    fd
+    file
+    fish
+    fzf
+    gcc
+    git
+    gnugrep
+    gnumake
+    gping
+    gtrash
+    inputs.nixpkgs-stable.legacyPackages."${pkgs.system}".delta # NOTE: this is instead lf default rustdesk which is at 1.2.3 version and fails to build due to rust 1.80.0 https://github.com/NixOS/nixpkgs/issues/332957
+    jq
+    just
+    killall
+    lazydocker
+    lazygit
+    lf
+    libxml2
+    lua
+    macchina
+    mise
+    ninja
+    nix-output-monitor
+    nix-search-cli
+    nodejs
+    nvd
+    openssl
+    pandoc
+    procs
+    python3
+    ripgrep
+    shfmt
+    sops
+    starship
+    stow
+    unar
+    unzip
+    wget
+    yazi
+    zellij
+    zip
+    zlib
+    zoxide
+  ];
+  programs.fish.enable = true;
+}
