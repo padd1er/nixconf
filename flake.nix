@@ -4,7 +4,7 @@
     ### NIXOS STUFF ###
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
@@ -48,12 +48,12 @@
       nixosConfigurations = {
         thinkbook-nixos = nixpkgs.lib.nixosSystem {
           inherit specialArgs;
-          modules = [ ./hosts/thinkbook/default.nix ];
+          modules = [ ./hosts/thinkbook/configuration.nix ];
         };
         wsl-nixos = nixpkgs.lib.nixosSystem {
           inherit specialArgs;
           system = "x86_64-linux";
-          modules = [ ./hosts/wsl/default.nix ];
+          modules = [ ./hosts/wsl/configuration.nix ];
         };
       };
     };
