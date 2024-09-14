@@ -17,6 +17,10 @@
     ../common/core/system.nix
     ../common/core/systemd.nix
     ../common/users/padd1er/default.nix
+    ../common/optional/setup-hypr.nix
+    ../common/optional/cli-packages.nix
+    ../common/optional/gui-packages.nix
+    ../common/optional/ssh-agent.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
