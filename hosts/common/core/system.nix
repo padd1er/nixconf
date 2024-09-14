@@ -103,6 +103,6 @@
 
   };
 
-  service.upower.enable = true;
+  services.upower.enable = true;
   security.polkit.enable = true;
 }
