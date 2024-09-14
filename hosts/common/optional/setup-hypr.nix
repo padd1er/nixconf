@@ -7,11 +7,6 @@
 }:
 
 {
-  imports = [ ./default.nix ];
-
-  app-cli-other.enable = lib.mkForce true;
-  app-gui-main.enable = lib.mkForce true;
-
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
