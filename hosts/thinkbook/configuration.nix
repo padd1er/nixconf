@@ -1,10 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
-  inputs,
-  outputs,
-  system,
   ...
 }:
 
@@ -14,13 +8,11 @@
     "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
     ./disko.nix
     ../common/core/default.nix
-    ../common/core/system.nix
-    ../common/core/systemd.nix
     ../common/users/padd1er/default.nix
-    ../common/optional/setup-hypr.nix
+    ../common/optional/user-environments/hypr.nix
     ../common/optional/cli-packages.nix
     ../common/optional/gui-packages.nix
-    ../common/optional/ssh-agent.nix
+    ../common/optional/setup-ssh-agent.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
