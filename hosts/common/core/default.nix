@@ -1,18 +1,12 @@
 {
-  config,
-  inputs,
-  lib,
-  pkgs,
   ...
 }:
+
 {
   imports = [
+    ./app-settings/default.nix
     ./cli-packages.nix
-    ./doas.nix
-    ./neovim.nix
-    ./nix.nix
-    ./ssh.nix
-    # ./system.nix
-    # ./systemd.nix
+    ./nix-settings.nix
+    ./system-settings/default.nix
   ];
 }
