@@ -2,12 +2,7 @@
 # https://github.com/nix-community/NixOS-WSL
 
 {
-  config,
   inputs,
-  lib,
-  outputs,
-  pkgs,
-  system,
   ...
 }:
 
