@@ -22,6 +22,7 @@
           pkgs.gomodifytags
           pkgs.impl
           pkgs.delve
+          pkgs.gopls
         ];
 
         shellHook = '''';
