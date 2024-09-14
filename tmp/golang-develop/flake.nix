@@ -15,7 +15,14 @@
 
         name = "Golang dev shell";
 
-        packages = [ pkgs.go ];
+        packages = [
+          pkgs.go
+          pkgs.gotools
+          pkgs.gofumpt
+          pkgs.gomodifytags
+          pkgs.impl
+          pkgs.delve
+        ];
 
         shellHook = '''';
       };
