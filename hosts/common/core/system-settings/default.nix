@@ -1,0 +1,19 @@
+{
+  ...
+}:
+{
+  imports = [
+    ./bluetooth.nix
+    ./cups-printer.nix
+    ./environment-variables.nix
+    ./font.nix
+    ./layout.nix
+    ./locale.nix
+    ./network.nix
+    ./other.nix
+    ./sound.nix
+    ./ssh.nix
+    ./systemd.nix
+    ./timezone.nix
+  ];
+}
