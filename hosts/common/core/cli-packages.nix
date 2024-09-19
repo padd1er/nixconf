@@ -1,7 +1,5 @@
 {
-  config,
   inputs,
-  lib,
   pkgs,
   ...
 }:
@@ -24,7 +22,8 @@
     gnumake
     gping
     gtrash
-    inputs.nixpkgs-stable.legacyPackages."${pkgs.system}".delta # NOTE: this is instead lf default rustdesk which is at 1.2.3 version and fails to build due to rust 1.80.0 https://github.com/NixOS/nixpkgs/issues/332957
+    delta
+    # inputs.nixpkgs-stable.legacyPackages."${pkgs.system}".delta # NOTE: this is instead lf default rustdesk which is at 1.2.3 version and fails to build due to rust 1.80.0 https://github.com/NixOS/nixpkgs/issues/332957
     jq
     just
     killall
