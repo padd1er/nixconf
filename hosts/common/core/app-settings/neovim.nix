@@ -1,7 +1,5 @@
 {
-  config,
   inputs,
-  lib,
   pkgs,
   ...
 }:
@@ -32,8 +30,8 @@
     tree-sitter
     vimPlugins.nvim-treesitter-parsers.hyprlang
     vimPlugins.vim-markdown-toc
-    # vscode-langservers-extracted
-    inputs.nixpkgs-stable.legacyPackages."${pkgs.system}".vscode-langservers-extracted
+    vscode-langservers-extracted
+    # inputs.nixpkgs-stable.legacyPackages."${pkgs.system}".vscode-langservers-extracted
     yaml-language-server
   ];
 
