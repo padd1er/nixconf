@@ -1,14 +1,13 @@
 {
-  config,
   inputs,
-  lib,
   pkgs,
   ...
 }:
 
 {
   environment.systemPackages = with pkgs; [
-    inputs.wezterm.packages.${pkgs.system}.default
+    # inputs.wezterm.packages.${pkgs.system}.default
+    wezterm
     alacritty
     bitwarden-desktop
     firefox
