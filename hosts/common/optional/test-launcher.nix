@@ -12,9 +12,7 @@
     nwg-drawer
     rofi-wayland
     sysmenu
-    tofi
     walker
     wofi
-    yofi
   ];
 }

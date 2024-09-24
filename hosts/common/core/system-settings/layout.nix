@@ -3,9 +3,16 @@
 }:
 
 {
-  services.xserver.xkb.layout = "pl";
-  services.xserver.exportConfiguration = true;
+
+  services.xserver.xkb.layout = "pl-bel";
   services.xserver.xkb.options = "lv3:ralt_switch";
+  services.xserver.xkb.extraLayouts.pl-bel = {
+    description = "PL layout with Belarusian symbols";
+    languages = [ "pl" ];
+    symbolsFile = ./symbols/pl-bel;
+  };
+  services.xserver.exportConfiguration = true;
+
   # programs.dconf = {
   #   enable = true;
   #   profiles.user.databases = [
