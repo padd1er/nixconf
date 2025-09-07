@@ -1,0 +1,7 @@
+{
+  libCustom,
+  ...
+}:
+{
+  imports = (libCustom.scanPaths ./.);
+}
