@@ -10,7 +10,7 @@
     vtsls
     # typescript-language-server
     docker-compose-language-service
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     eslint_d
     hadolint
     hyprls
