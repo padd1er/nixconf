@@ -11,6 +11,7 @@
     fselect
     grex
     hyperfine
+    jujutsu
     lemmeknow
     macchina
     miniserve
@@ -18,8 +19,8 @@
     navi
     pandoc
     pastel
+    pulseaudio
     tealdeer
-    jujutsu
     tlrc
   ];
 }

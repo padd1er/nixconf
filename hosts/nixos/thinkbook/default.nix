@@ -18,7 +18,6 @@
     ./hardware-configuration.nix
     ./disko.nix
     ./apps-extra.nix
-    ./piper.nix
     (map libCustom.relativeToRoot [
       "modules/common/host-spec.nix"
       "hosts/common/core"
@@ -33,6 +32,7 @@
       "hosts/common/optional/apps/gaming.nix"
       "hosts/common/optional/apps/libreoffice.nix"
       "hosts/common/optional/apps/wezterm-flake.nix"
+      "hosts/common/optional/apps/piper-tts-overlay.nix"
       "hosts/common/optional/user-environments/xfce.nix"
     ])
   ];

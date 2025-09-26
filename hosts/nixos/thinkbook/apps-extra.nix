@@ -12,10 +12,6 @@
     uutils-coreutils-noprefix
     jujutsu
     claude-code
-    # audio tools
-    sox
-    alsa-utils
-    pulseaudio
-    wireplumber
+    nmap
   ];
 }

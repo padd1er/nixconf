@@ -6,7 +6,6 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
-      # Completely rebuild piper-tts from PyPI wheel with proper Nix integration
       piper-tts = prev.python3Packages.buildPythonApplication rec {
         pname = "piper-tts";
         version = "1.3.0";
@@ -17,7 +16,6 @@
           sha256 = "sha256-I0wlR0ZVsm80GLhFIsgVxD6bG8ih/bE8KyhRQpDBZfA=";
         };
 
-        # Ensure all Python dependencies are available
         propagatedBuildInputs = with prev.python3Packages; [
           numpy
           onnxruntime
@@ -26,7 +24,6 @@
           humanfriendly
         ];
 
-        # Build tools and runtime dependencies
         nativeBuildInputs = with prev; [
           makeWrapper
           autoPatchelfHook
@@ -39,32 +36,31 @@
           espeak-ng
         ];
 
-        # Don't run tests - they require models and network access
         doCheck = false;
 
-        # Fix the installation to work properly with Nix
         postInstall = ''
-          # Ensure the espeakbridge shared library is properly linked
           if [ -f $out/${prev.python3.sitePackages}/piper/libespeakbridge.so ]; then
-            # Patch the shared library to find espeak-ng
-            patchelf --set-rpath "${prev.lib.makeLibraryPath [
-              prev.stdenv.cc.cc.lib
-              prev.glibc
-              prev.zlib
-              prev.espeak-ng
-            ]}" $out/${prev.python3.sitePackages}/piper/libespeakbridge.so
+            patchelf --set-rpath "${
+              prev.lib.makeLibraryPath [
+                prev.stdenv.cc.cc.lib
+                prev.glibc
+                prev.zlib
+                prev.espeak-ng
+              ]
+            }" $out/${prev.python3.sitePackages}/piper/libespeakbridge.so
           fi
         '';
 
         postFixup = ''
-          # Wrap the piper binary with proper environment
           wrapProgram $out/bin/piper \
-            --set LD_LIBRARY_PATH "${prev.lib.makeLibraryPath [
-              prev.stdenv.cc.cc.lib
-              prev.glibc
-              prev.zlib
-              prev.espeak-ng
-            ]}" \
+            --set LD_LIBRARY_PATH "${
+              prev.lib.makeLibraryPath [
+                prev.stdenv.cc.cc.lib
+                prev.glibc
+                prev.zlib
+                prev.espeak-ng
+              ]
+            }" \
             --prefix PATH : ${prev.espeak-ng}/bin \
             --set ESPEAK_DATA_PATH "${prev.espeak-ng}/share/espeak-ng-data"
         '';
@@ -74,7 +70,7 @@
           homepage = "https://github.com/rhasspy/piper";
           license = licenses.mit;
           platforms = platforms.linux;
-          maintainers = [];
+          maintainers = [ ];
         };
       };
     })
