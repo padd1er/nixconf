@@ -31,7 +31,7 @@
     nixd
     nixfmt-rfc-style
     # TODO: remove "if" when prettier goes stable
-    (if lib.hasAttr "prettier" pkgs then prettier else prettierd)
+    (if lib.hasAttr "prettier" pkgs then prettier else nodePackages.prettier)
     # prettierd
     # prettier
     pyright
