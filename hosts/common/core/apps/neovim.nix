@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   ...
 }:
@@ -10,7 +11,15 @@
     vtsls
     # typescript-language-server
     docker-compose-language-service
-    dockerfile-language-server
+    # TODO: remove "if" when dockerfile-language-server goes stable
+    (
+      if lib.hasAttr "dockerfile-language-server" pkgs then
+        dockerfile-language-server
+      else
+        dockerfile-language-server-nodejs
+    )
+    # dockerfile-language-server-nodejs
+    # dockerfile-language-server
     eslint_d
     hadolint
     hyprls
@@ -21,8 +30,10 @@
     neovim
     nixd
     nixfmt-rfc-style
+    # TODO: remove "if" when prettier goes stable
+    (if lib.hasAttr "prettier" pkgs then prettier else prettierd)
     # prettierd
-    prettier
+    # prettier
     pyright
     ruff
     shellcheck
