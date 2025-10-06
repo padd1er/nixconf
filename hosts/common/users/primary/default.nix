@@ -49,7 +49,7 @@ in
       mode = "0600";
       owner = ownerUser;
       group = ownerGroup;
-      path = "${homeDir}/.ssh/id_${userName}";
+      path = "${homeDir}/.ssh/id_device";
     };
     "user_passwords/${userName}" = {
       neededForUsers = true;
