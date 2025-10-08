@@ -33,6 +33,7 @@
       "hosts/common/optional/apps/libreoffice.nix"
       "hosts/common/optional/apps/wezterm-flake.nix"
       "hosts/common/optional/apps/piper-tts-overlay.nix"
+      "hosts/common/optional/apps/yubikey.nix"
       "hosts/common/optional/user-environments/xfce.nix"
     ])
   ];
