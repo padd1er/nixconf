@@ -14,7 +14,7 @@
 
       enable = true;
       execWheelOnly = false;
-      wheelNeedsPassword = false;
+      wheelNeedsPassword = true;
     };
   };
 }
