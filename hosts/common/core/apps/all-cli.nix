@@ -13,7 +13,6 @@
       bottom
       curl
       delta
-      # doas-sudo-shim # NOTE: this is a dirty hack to use some doas with nixos build/test/switch
       exiftool
       eza
       fd
@@ -48,6 +47,7 @@
       zellij
       zip
       zoxide
+      usbutils
     ])
     ++ (with inputs.nixpkgs-stable.legacyPackages."${pkgs.system}"; [
 
