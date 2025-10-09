@@ -2,6 +2,9 @@
 
 keys:
   - &primary age12awywjkq4vz7vvl09drrz63y3knj48fpgehgz02y6ct079ckdcps7p9ezj
+  - &yubikeys:
+    - &MAIN age1yubikey1qwmsh9cyleu9awj7myytzp6tnz749s453alnpdlwp6ufcye5m8susp8g3l3
+    - &BACK age1yubikey1q0tweg7yddprt8zjgc2cwpgps286zqg964kzg2a4vju9xwd7smpfg95p9md
   - &hosts:
     - &wsl age1j9266vjsp6r7vukc2ee3dtadk4kqwgc736j786vvmqttktnztvdqnnx83v
     - &box age1kxsfwgpu2wkaunpmq7gdhyya2zcfpg097w7dequjjkymqn65yuuqatsl3w
@@ -16,3 +19,5 @@ creation_rules:
           - *box
           - *thinkbook
           - *ideapad
+          - *MAIN
+          - *BACK
