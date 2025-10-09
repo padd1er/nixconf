@@ -7,7 +7,8 @@
 {
   environment.systemPackages =
     (with pkgs; [
-      age
+      age # TODO:remove when confirmed rage is working
+      rage
       atuin
       bat
       bottom
