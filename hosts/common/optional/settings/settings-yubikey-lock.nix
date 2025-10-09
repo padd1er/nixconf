@@ -1,4 +1,8 @@
-{ pkgs }:
+{
+  pkgs,
+  ...
+}:
+
 {
   services.udev.extraRules = ''
     ACTION=="remove",\
