@@ -26,6 +26,7 @@
       "hosts/common/optional/settings/settings-bluetooth.nix"
       "hosts/common/optional/settings/settings-sound.nix"
       "hosts/common/optional/settings/settings-cups-printer.nix"
+      "hosts/common/optional/settings/settings-yubikey-lock.nix"
       "hosts/common/optional/apps/all-cli.nix"
       "hosts/common/optional/apps/all-gui.nix"
       "hosts/common/optional/apps/qmk.nix"
