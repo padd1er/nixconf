@@ -14,6 +14,7 @@
     jujutsu
     lemmeknow
     macchina
+    fastfetch
     miniserve
     mise
     navi
@@ -22,5 +23,6 @@
     pulseaudio
     tealdeer
     tlrc
+    cyme # lsusb replacement
   ];
 }
