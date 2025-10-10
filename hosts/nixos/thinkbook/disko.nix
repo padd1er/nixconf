@@ -22,7 +22,13 @@
               content = {
                 type = "luks";
                 name = "crypted-root";
-                settings.allowDiscards = true;
+                settings = {
+                  allowDiscards = true;
+                  crypttabExtraOpts = [
+                    "fido2-device=auto"
+                    "token-timeout=10"
+                  ];
+                };
                 passwordFile = "/tmp/nix-root.key";
                 content = {
                   type = "filesystem";
@@ -46,7 +52,13 @@
               content = {
                 type = "luks";
                 name = "crypted-home";
-                settings.allowDiscards = true;
+                settings = {
+                  allowDiscards = true;
+                  crypttabExtraOpts = [
+                    "fido2-device=auto"
+                    "token-timeout=10"
+                  ];
+                };
                 passwordFile = "/tmp/nix-home.key";
                 content = {
                   type = "filesystem";
