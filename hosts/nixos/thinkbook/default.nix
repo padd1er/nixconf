@@ -50,6 +50,8 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.systemd.enable = true;
+  boot.initrd.luks.fido2Support = false;
 
   networking.hostName = "${config.hostSpec.name}-nixos";
 
