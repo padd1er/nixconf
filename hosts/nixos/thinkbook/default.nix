@@ -27,6 +27,7 @@
       "hosts/common/optional/settings/settings-sound.nix"
       "hosts/common/optional/settings/settings-cups-printer.nix"
       "hosts/common/optional/settings/settings-yubikey-lock.nix"
+      "hosts/common/optional/settings/settings-ssd.nix"
       "hosts/common/optional/apps/all-cli.nix"
       "hosts/common/optional/apps/all-gui.nix"
       "hosts/common/optional/apps/qmk.nix"
@@ -48,10 +49,14 @@
     };
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.systemd.enable = true;
-  boot.initrd.luks.fido2Support = false;
+  boot = {
+    # consoleLogLevel = 8;
+    # kernelParams = [ "boot.trace" ];
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
   networking.hostName = "${config.hostSpec.name}-nixos";
 
