@@ -22,18 +22,19 @@
               content = {
                 type = "luks";
                 name = "crypted-root";
-                settings = {
-                  allowDiscards = true;
-                  crypttabExtraOpts = [
-                    "fido2-device=auto"
-                    "token-timeout=10"
-                  ];
-                };
+                extraOpenArgs = [
+                  "--allow-discards"
+                  "--perf-no_read_workqueue"
+                  "--perf-no_write_workqueue"
+                ];
                 passwordFile = "/tmp/nix-root.key";
                 content = {
                   type = "filesystem";
                   format = "ext4";
                   mountpoint = "/";
+                  mountOptions = [
+                    "noatime"
+                  ];
                 };
               };
             };
@@ -52,18 +53,19 @@
               content = {
                 type = "luks";
                 name = "crypted-home";
-                settings = {
-                  allowDiscards = true;
-                  crypttabExtraOpts = [
-                    "fido2-device=auto"
-                    "token-timeout=10"
-                  ];
-                };
+                extraOpenArgs = [
+                  "--allow-discards"
+                  "--perf-no_read_workqueue"
+                  "--perf-no_write_workqueue"
+                ];
                 passwordFile = "/tmp/nix-home.key";
                 content = {
                   type = "filesystem";
                   format = "ext4";
                   mountpoint = "/home";
+                  mountOptions = [
+                    "noatime"
+                  ];
                 };
               };
             };
