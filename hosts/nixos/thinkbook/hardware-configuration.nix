@@ -15,9 +15,19 @@
     "usb_storage"
     "sd_mod"
     "rtsx_pci_sdmmc"
+    "usbhid"
   ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.initrd.kernelModules = [
+    "amdgpu"
+    "nvme"
+    "vfat"
+    "nls_cp437"
+    "nls_iso8859-1"
+    "usbhid"
+  ];
+  boot.kernelModules = [
+    "kvm-amd"
+  ];
   boot.extraModulePackages = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -36,9 +46,5 @@
       enable = true;
       enable32Bit = true;
     };
-    # amdgpu.amdvlk = {
-    #   enable = true;
-    #   support32Bit.enable = true;
-    # };
   };
 }
