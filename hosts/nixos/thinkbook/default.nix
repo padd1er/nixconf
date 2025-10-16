@@ -26,7 +26,7 @@
       "hosts/common/optional/settings/settings-bluetooth.nix"
       "hosts/common/optional/settings/settings-sound.nix"
       "hosts/common/optional/settings/settings-cups-printer.nix"
-      "hosts/common/optional/settings/settings-yubikey-lock.nix"
+      # "hosts/common/optional/settings/settings-yubikey-lock.nix"
       "hosts/common/optional/settings/settings-ssd.nix"
       "hosts/common/optional/apps/all-cli.nix"
       "hosts/common/optional/apps/all-gui.nix"
@@ -50,13 +50,43 @@
   };
 
   boot = {
-    # consoleLogLevel = 8;
-    # kernelParams = [ "boot.trace" ];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    initrd.luks.reusePassphrases = false;
+    initrd = {
+      luks = {
+        reusePassphrases = false;
+        yubikeySupport = true;
+        devices = {
+          "crypted0-root" = {
+            device = "/dev/disk/by-partlabel/disk-disk0-root";
+            yubikey = {
+              slot = 2;
+              twoFactor = false;
+              gracePeriod = 5;
+              storage = {
+                device = "/dev/disk/by-partlabel/disk-disk0-boot";
+                path = "/crypt-storage/root";
+              };
+            };
+          };
+          "crypted1-home" = {
+            preLVM = false;
+            device = "/dev/disk/by-partlabel/disk-disk1-home";
+            yubikey = {
+              slot = 2;
+              twoFactor = false;
+              gracePeriod = 5;
+              storage = {
+                device = "/dev/disk/by-partlabel/disk-disk0-boot";
+                path = "/crypt-storage/home";
+              };
+            };
+          };
+        };
+      };
+    };
   };
 
   networking.hostName = "${config.hostSpec.name}-nixos";

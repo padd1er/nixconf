@@ -21,13 +21,13 @@
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted-root";
+                name = "crypted0-root";
                 extraOpenArgs = [
                   "--allow-discards"
                   "--perf-no_read_workqueue"
                   "--perf-no_write_workqueue"
                 ];
-                passwordFile = "/tmp/nix-root.key";
+                # passwordFile = "/tmp/nix-root.key";
                 content = {
                   type = "filesystem";
                   format = "ext4";
@@ -52,13 +52,13 @@
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted-home";
+                name = "crypted1-home";
                 extraOpenArgs = [
                   "--allow-discards"
                   "--perf-no_read_workqueue"
                   "--perf-no_write_workqueue"
                 ];
-                passwordFile = "/tmp/nix-home.key";
+                # passwordFile = "/tmp/nix-home.key";
                 content = {
                   type = "filesystem";
                   format = "ext4";
