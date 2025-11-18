@@ -1,0 +1,103 @@
+{
+  inputs,
+  pkgs,
+  ...
+}:
+
+{
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland.enable = true;
+  # };
+
+  # https://wiki.nixos.org/wiki/Niri
+  programs.niri.enable = true;
+  security.polkit.enable = true; # polkit
+  services.gnome.gnome-keyring.enable = true; # secret service
+  security.pam.services.swaylock = { };
+  programs.waybar.enable = true; # top bar
+
+  environment.systemPackages = with pkgs; [
+    alacritty
+    fuzzel
+    swaylock
+    mako
+    swayidle
+    dconf
+    xwayland-satellite
+  ];
+
+  environment.sessionVariables = {
+    # WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
+  };
+
+  hardware = {
+    graphics.enable = true;
+  };
+
+  # environment.systemPackages = with pkgs; [
+  #   adwaita-qt
+  #   adwaita-qt6
+  #   libadwaita
+  #   libsForQt5.qt5.qtwayland
+  #   kdePackages.qtwayland
+  #   kdePackages.polkit-kde-agent-1
+  #   xsettingsd
+  #   # -- bars
+  #   # TODO: this is temp, ho docs for version 2
+  #   inputs.hyprpanel.packages.${pkgs.system}.default
+  #   # gbar
+  #   # waybar
+  #   # ironbar
+  #   # ags
+  #   # -- notifications
+  #   # dunst
+  #   # libnotify
+  #   # mako
+  #   # swaync
+  #   # -- applaunchers
+  #   inputs.walker.packages.${pkgs.system}.default
+  #   # rofi-wayland
+  #   # ulauncher
+  #   # -- hypr apps
+  #   hyprlock
+  #   hyprpaper
+  #   hypridle
+  #   hyprcursor
+  #   hyprpaper
+  #   # -- file managers
+  #   xfce.thunar
+  #   nautilus
+  #   sushi
+  #   nemo
+  #   kdePackages.dolphin
+  #   pcmanfm
+  #   # -- other
+  #   dconf
+  #   # -- system utils
+  #   brightnessctl
+  #   wl-clipboard
+  # ];
+
+  programs.dconf.enable = true;
+
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  # };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      terminal = {
+        vt = 7;
+      };
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --cmd niri --debug /var/log/tuigreet.log";
+        # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --cmd hyprland --debug /var/log/tuigreet.log --theme border=darkgray;text=white;prompt=lightgray;time=gray;action=cyan;button=lightyellow;container=black;input=lightgray";
+        user = "greeter";
+      };
+    };
+  };
+}

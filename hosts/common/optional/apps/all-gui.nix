@@ -14,8 +14,8 @@
     flameshot
     ghostty
     google-chrome
-    inputs.catppuccin.packages.${pkgs.system}.default
-    inputs.zen-browser.packages.${pkgs.system}.default
+    inputs.catppuccin.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     keepassxc
     localsend
     mpv
@@ -24,7 +24,7 @@
     papirus-icon-theme
     rustdesk-flutter # NOTE: this is instead lf default rustdesk which is at 1.2.3 version and fails to build due to rust 1.80.0 https://github.com/NixOS/nixpkgs/issues/332957
     # NOTE: this is due to qtwebengine5-15 EOL/deprecation
-    inputs.nixpkgs-stable.legacyPackages."${pkgs.system}".seafile-client
+    inputs.nixpkgs-stable.legacyPackages."${pkgs.stdenv.hostPlatform.system}".seafile-client
     # seafile-client
     slack
     spotify

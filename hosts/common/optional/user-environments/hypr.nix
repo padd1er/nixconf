@@ -29,7 +29,7 @@
     xsettingsd
     # -- bars
     # TODO: this is temp, ho docs for version 2
-    inputs.hyprpanel.packages.${pkgs.system}.default
+    inputs.hyprpanel.packages.${pkgs.stdenv.hostPlatform.system}.default
     # gbar
     # waybar
     # ironbar
@@ -40,7 +40,7 @@
     # mako
     # swaync
     # -- applaunchers
-    inputs.walker.packages.${pkgs.system}.default
+    inputs.walker.packages.${pkgs.stdenv.hostPlatform.system}.default
     # rofi-wayland
     # ulauncher
     # -- hypr apps

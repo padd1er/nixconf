@@ -44,7 +44,7 @@
     vimPlugins.nvim-treesitter-parsers.hyprlang
     vimPlugins.vim-markdown-toc
     vscode-langservers-extracted
-    # inputs.nixpkgs-stable.legacyPackages."${pkgs.system}".vscode-langservers-extracted
+    # inputs.nixpkgs-stable.legacyPackages."${pkgs.stdenv.hostPlatform.system}".vscode-langservers-extracted
     yaml-language-server
     wl-clipboard
   ];

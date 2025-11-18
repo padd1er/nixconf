@@ -7,7 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
     wezterm
-    # inputs.wezterm.packages.${pkgs.system}.default
+    # inputs.wezterm.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
 }
