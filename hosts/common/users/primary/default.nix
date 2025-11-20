@@ -35,6 +35,7 @@ in
         "video"
         "input"
         "docker"
+        "plugdev"
       ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = lib.lists.forEach authorizedKeys (key: builtins.readFile key);
