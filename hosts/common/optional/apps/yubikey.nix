@@ -20,7 +20,6 @@ in
   services = {
     pcscd.enable = true;
     udev.packages = [ pkgs.yubikey-personalization ];
-    yubikey-agent.enable = true;
   };
 
   sops.secrets.yubikey_u2f_keys = {
