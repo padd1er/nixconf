@@ -13,6 +13,7 @@
   # TODO: tweak for minimal steam gaming
   # TODO: setup hyprland environment
   # TODO: setup kde environment
+  # TODO: setup niri qith quickshell
   imports = lib.flatten [
     inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
@@ -34,9 +35,11 @@
       "hosts/common/optional/apps/gaming.nix"
       "hosts/common/optional/apps/libreoffice.nix"
       "hosts/common/optional/apps/wezterm-flake.nix"
-      "hosts/common/optional/apps/piper-tts-overlay.nix"
+      "hosts/common/optional/apps/piper-tts.nix"
       "hosts/common/optional/apps/yubikey.nix"
-      "hosts/common/optional/user-environments/xfce.nix"
+      # "hosts/common/optional/user-environments/xfce.nix"
+      "hosts/common/optional/user-environments/niri.nix"
+      # "hosts/common/optional/user-environments/hypr.nix"
     ])
   ];
 
@@ -64,7 +67,7 @@
             yubikey = {
               slot = 2;
               twoFactor = false;
-              gracePeriod = 5;
+              gracePeriod = 3;
               storage = {
                 device = "/dev/disk/by-partlabel/disk-disk0-boot";
                 path = "/crypt-storage/root";
@@ -77,7 +80,7 @@
             yubikey = {
               slot = 2;
               twoFactor = false;
-              gracePeriod = 5;
+              gracePeriod = 3;
               storage = {
                 device = "/dev/disk/by-partlabel/disk-disk0-boot";
                 path = "/crypt-storage/home";
