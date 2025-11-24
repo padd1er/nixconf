@@ -12,6 +12,7 @@
     };
     displayManager.lightdm.enable = false;
   };
+  # NOTE: this is not necessary
   services.displayManager.defaultSession = "xfce";
 
   environment.systemPackages = with pkgs; [
@@ -30,5 +31,4 @@
       };
     };
   };
-
 }

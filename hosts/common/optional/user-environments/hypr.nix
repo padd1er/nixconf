@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   pkgs,
   ...
@@ -29,7 +30,7 @@
     xsettingsd
     # -- bars
     # TODO: this is temp, ho docs for version 2
-    inputs.hyprpanel.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.hyprpanel.packages.${pkgs.stdenv.hostPlatform.system}.default
     # gbar
     # waybar
     # ironbar
@@ -40,7 +41,7 @@
     # mako
     # swaync
     # -- applaunchers
-    inputs.walker.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.walker.packages.${pkgs.stdenv.hostPlatform.system}.default
     # rofi-wayland
     # ulauncher
     # -- hypr apps
@@ -61,6 +62,7 @@
     # -- system utils
     brightnessctl
     wl-clipboard
+    fuzzel
   ];
 
   programs.dconf.enable = true;
@@ -74,11 +76,10 @@
     enable = true;
     settings = {
       terminal = {
-        vt = 7;
+        vt = lib.mkForce 7;
       };
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --cmd hyprland --debug /var/log/tuigreet.log";
-        # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --cmd hyprland --debug /var/log/tuigreet.log --theme border=darkgray;text=white;prompt=lightgray;time=gray;action=cyan;button=lightyellow;container=black;input=lightgray";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --cmd hyprland --debug /var/log/tuigreet.log";
         user = "greeter";
       };
     };
