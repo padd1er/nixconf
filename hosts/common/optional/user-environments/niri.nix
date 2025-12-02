@@ -7,20 +7,17 @@
 }:
 
 {
-  imports = [
-    inputs.dankMaterialShell.nixosModules.dankMaterialShell
+  nixpkgs.overlays = [
+    overlays.fuzzel-askpass
+    overlays.nirius
   ];
-
-  nixpkgs.overlays = [ overlays.fuzzel-askpass ];
 
   programs = {
     niri.enable = true;
     dconf.enable = true;
-    dankMaterialShell.enable = true;
     ssh = {
       enableAskPassword = true;
-      askPassword = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
-      # askPassword = lib.mkForce "${pkgs.fuzzel-askpass}/bin/fuzzel-askpass";
+      askPassword = lib.mkForce "${pkgs.fuzzel-askpass}/bin/fuzzel-askpass";
     };
   };
 
@@ -28,28 +25,24 @@
     polkit = {
       enable = true;
     };
-    pam.services.swaylock = { };
-  };
-
-  services.gnome = {
-    gcr-ssh-agent.enable = false;
-    gnome-keyring.enable = false;
+    # pam.services.swaylock = { }; # NOTE: using quickshell noctalia
   };
 
   environment = {
     sessionVariables = {
-      SSH_ASKPASS = lib.mkForce "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
-      # SSH_ASKPASS = lib.mkForce "${pkgs.fuzzel-askpass}/bin/fuzzel-askpass";
+      SSH_ASKPASS = lib.mkForce "${pkgs.fuzzel-askpass}/bin/fuzzel-askpass";
       # WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
     };
     systemPackages = with pkgs; [
-
-      rofi
+      cava
+      matugen
+      cliphist
       fuzzel
       fuzzel-askpass
-      swaylock
-      # mako
+      nirius # TODO: switch to official package past 0.6.1
+      # swaylock # NOTE: using quickshell noctalia
+      # mako # NOTE: using quickshell noctalia
       swayidle
       dconf
       xwayland-satellite
@@ -80,6 +73,14 @@
 
   services = {
     displayManager.sessionPackages = [ pkgs.niri ];
+
+    power-profiles-daemon.enable = true;
+
+    gnome = {
+      gcr-ssh-agent.enable = false;
+      gnome-keyring.enable = false;
+    };
+
     greetd = {
       enable = true;
       settings = {
@@ -87,7 +88,12 @@
           vt = lib.mkForce 7;
         };
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --debug /var/log/tuigreet.log";
+          command = ''
+            ${pkgs.tuigreet}/bin/tuigreet \
+              --time \
+              --asterisks \
+              --debug /tmp/tuigreet.log
+          '';
           user = "greeter";
         };
       };
