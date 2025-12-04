@@ -47,7 +47,7 @@
   # TODO: this is optional, remove later
   environment.systemPackages = with pkgs; [
     teams-for-linux
-    whatsapp-for-linux
+    wasistlos
     zoom-us
   ];
 
