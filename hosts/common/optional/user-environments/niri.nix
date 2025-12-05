@@ -14,7 +14,21 @@
 
   programs = {
     niri.enable = true;
-    dconf.enable = true;
+    dconf = {
+      enable = true;
+      profiles.user.databases = [
+        {
+          lockAll = true;
+          settings = {
+            "org/gnome/desktop/interface" = {
+              gtk-theme = "catppuccin-mocha-mauve-standard";
+              icon-theme = "Tela dracula";
+              color-scheme = "prefer-dark";
+            };
+          };
+        }
+      ];
+    };
     ssh = {
       enableAskPassword = true;
       askPassword = lib.mkForce "${pkgs.fuzzel-askpass}/bin/fuzzel-askpass";
@@ -28,15 +42,32 @@
     # pam.services.swaylock = { }; # NOTE: using quickshell noctalia
   };
 
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+  };
+
   environment = {
+    pathsToLink = [
+      "/share/qt5ct"
+      "/share/qt6ct"
+    ];
+
     sessionVariables = {
       SSH_ASKPASS = lib.mkForce "${pkgs.fuzzel-askpass}/bin/fuzzel-askpass";
       # WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
     };
+
     systemPackages = with pkgs; [
-      cava
-      matugen
+      # themes
+      (catppuccin-gtk.override {
+        variant = "mocha";
+        accents = [ "mauve" ];
+      })
+      catppuccin-qt5ct
+      tela-icon-theme
+      dconf
       cliphist
       fuzzel
       fuzzel-askpass
@@ -44,12 +75,10 @@
       # swaylock # NOTE: using quickshell noctalia
       # mako # NOTE: using quickshell noctalia
       swayidle
-      dconf
       xwayland-satellite
       kdePackages.polkit-kde-agent-1
       xdg-desktop-portal-gtk
       xdg-desktop-portal-gnome
-      kdePackages.ksshaskpass
       inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
