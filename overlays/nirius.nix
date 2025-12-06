@@ -2,7 +2,6 @@ self: super:
 
 {
   nirius = super.nirius.overrideAttrs (old: {
-    # pname = "nirius-git";
     version = "git-165e3d8";
 
     src = super.fetchgit {
@@ -11,7 +10,6 @@ self: super:
       hash = "sha256-Nz+7wVTt6i2owtQ1vWRtU5FtfZMMsn4l98zOrKkk8eM=";
     };
 
-    # First run will fail; copy the required cargoHash from the error.
-    cargoSha256 = "sha256-Nz+7wVTt6i2owtQ1vWRtU5FtfZMMsn4l98zOrKkk8eM=";
+    cargoHash = "";
   });
 }

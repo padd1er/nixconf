@@ -60,6 +60,9 @@
     };
 
     systemPackages = with pkgs; [
+      grim
+      slurp
+      satty
       # themes
       (catppuccin-gtk.override {
         variant = "mocha";
@@ -68,6 +71,7 @@
       catppuccin-qt5ct
       tela-icon-theme
       dconf
+      # themes
       cliphist
       fuzzel
       fuzzel-askpass
