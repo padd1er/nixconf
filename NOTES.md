@@ -6,6 +6,12 @@
 
 ## TODO
 
+- fix ssh issues under wayland (niri, hypr)
+
+- continue setting up niri
+
+- add quickshell to niri
+
 - add disko script
 
 - <https://nixos-and-flakes.thiscute.world/preface>
