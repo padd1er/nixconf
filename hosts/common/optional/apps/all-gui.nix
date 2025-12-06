@@ -6,16 +6,18 @@
 
 {
   environment.systemPackages = with pkgs; [
-    alacritty
+    # alacritty
     amberol
     bibata-cursors
     bitwarden-desktop
-    firefox
-    flameshot
+    # firefox
+    # flameshot
+    # gradia
+    # shutter
     ghostty
     google-chrome
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    keepassxc
+    # keepassxc
     localsend
     mpv
     nomacs
