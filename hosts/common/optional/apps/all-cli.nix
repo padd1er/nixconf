@@ -25,5 +25,6 @@
     pulseaudio
     tealdeer
     tlrc
+    libnotify
   ];
 }

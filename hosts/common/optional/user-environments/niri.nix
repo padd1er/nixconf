@@ -78,6 +78,7 @@
       nirius # TODO: switch to official package past 0.6.1
       # swaylock # NOTE: using quickshell noctalia
       # mako # NOTE: using quickshell noctalia
+      libnotify
       swayidle
       xwayland-satellite
       kdePackages.polkit-kde-agent-1
@@ -91,16 +92,44 @@
     graphics.enable = true;
   };
 
-  systemd.user.services.polkit-kde-authentication-agent-1 = {
-    description = "Polkit KDE Authentication Agent";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
+  systemd.user.services = {
+
+    polkit-authentication-agent = {
+      description = "Polkit Authentication Agent";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+      };
+    };
+
+    swayidle = {
+      description = "Idle Service";
+      path = with pkgs; [
+        swayidle
+        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+        niri
+      ];
+      serviceConfig = {
+        ExecStart = ''
+          ${pkgs.swayidle}/bin/swayidle -w \
+            timeout 600 '${
+              inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+            }/bin/noctalia-shell ipc call lockScreen lock' \
+            timeout 900 '${pkgs.niri}/bin/niri msg action power-off-monitors' \
+            timeout 1800 'systemctl suspend'
+            before-sleep '${
+              inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+            }/bin/noctalia-shell ipc call lockScreen lock'
+        '';
+        Restart = "on-failure";
+      };
+      wantedBy = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
     };
   };
 
