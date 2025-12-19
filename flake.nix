@@ -99,6 +99,13 @@
     in
     {
       nixosConfigurations = {
+        torrent-nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = baseSpecialArgs;
+          modules = [
+            ./hosts/nixos/torrent
+            cacheModule
+          ];
+        };
         thinkbook-nixos = nixpkgs.lib.nixosSystem {
           specialArgs = baseSpecialArgs;
           modules = [
