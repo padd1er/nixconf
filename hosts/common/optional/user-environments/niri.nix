@@ -78,6 +78,7 @@
       nirius # TODO: switch to official package past 0.6.1
       # swaylock # NOTE: using quickshell noctalia
       # mako # NOTE: using quickshell noctalia
+      kanshi
       libnotify
       swayidle
       xwayland-satellite
