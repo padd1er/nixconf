@@ -30,6 +30,7 @@
     neovim
     nixd
     nixfmt-rfc-style
+    statix
     # TODO: remove "if" when prettier goes stable
     (if lib.hasAttr "prettier" pkgs then prettier else nodePackages.prettier)
     # prettierd
