@@ -8,7 +8,7 @@
 }:
 
 {
-  imports = [
+  imports = lib.flatten [
     inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
     ./disko.nix
