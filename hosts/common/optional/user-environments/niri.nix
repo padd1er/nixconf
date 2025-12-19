@@ -7,6 +7,7 @@
 }:
 
 {
+  # TODO: work on themes and styling, check with hyprland
   nixpkgs.overlays = [
     overlays.fuzzel-askpass
     overlays.nirius
