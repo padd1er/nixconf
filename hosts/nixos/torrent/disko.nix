@@ -23,7 +23,7 @@
                 type = "luks";
                 name = "crypted0";
                 settings.allowDiscards = true;
-                passwordFile = "/tmp/luks_torrent.key";
+                # passwordFile = "/tmp/luks_torrent.key";
                 content = {
                   type = "filesystem";
                   format = "ext4";
