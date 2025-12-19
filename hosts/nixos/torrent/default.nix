@@ -16,7 +16,7 @@
       "modules/common/host-spec.nix"
       "hosts/common/core"
       "hosts/common/users/primary"
-      # "hosts/common/optional/settings/settings-ssh.nix"
+      "hosts/common/optional/settings/settings-ssh.nix"
       "hosts/common/optional/settings/settings-bluetooth.nix"
       "hosts/common/optional/settings/settings-sound.nix"
       "hosts/common/optional/settings/settings-cups-printer.nix"
