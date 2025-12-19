@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sdb";
+        device = "/dev/disk/by-id/usb-KINGSTON_SA2000M8100_DD56419883A7E-0:0";
         content = {
           type = "gpt";
           partitions = {
