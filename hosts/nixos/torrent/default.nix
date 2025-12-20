@@ -20,10 +20,10 @@
       "hosts/common/optional/settings/settings-bluetooth.nix"
       "hosts/common/optional/settings/settings-sound.nix"
       "hosts/common/optional/settings/settings-cups-printer.nix"
-      # # "hosts/common/optional/settings/settings-yubikey-lock.nix"
+      "hosts/common/optional/settings/settings-yubikey-lock.nix"
       "hosts/common/optional/settings/settings-ssd.nix"
-      # "hosts/common/optional/apps/all-cli.nix"
-      # "hosts/common/optional/apps/all-gui.nix"
+      "hosts/common/optional/apps/all-cli.nix"
+      "hosts/common/optional/apps/all-gui.nix"
       "hosts/common/optional/apps/qmk.nix"
       "hosts/common/optional/apps/gaming.nix"
       "hosts/common/optional/apps/libreoffice.nix"
@@ -82,24 +82,12 @@
 
   # Basic packages
   environment.systemPackages = with pkgs; [
-    # Terminal and basics
-
-    # Niri essentials
-    # fuzzel # App launcher
-    # kanshi
-
-    # File manager
-    # nautilus
+    # telegram-desktop
+    # ghostty
   ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Niri compositor
-  # programs.niri = {
-  #   enable = true;
-  #   package = pkgs.niri;
-  # };
 
   system.stateVersion = "25.11";
 
