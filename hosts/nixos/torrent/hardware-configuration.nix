@@ -15,36 +15,17 @@
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     kernelPackages = pkgs.linuxPackages_latest;
-    # kernelParams = [ "amd_pstate=active" "rootdelay=20" ]; # AMD CPU power management
-    # boot.kernelParams = [ "usb-storage.quirks=152d:0583:u" ];
 
     kernelParams = [
-      "usb-storage.quirks=152d:0583:u"
+      # "usb-storage.quirks=152d:0583:u" # nvme
       "amd_pstate=active"
       "rootdelay=20"
-      "usbcore.autosuspend=-1" # Prevents USB sleep during boot
-      "pcie_aspm=off" # Sometimes helps with NVMe-to-USB stability
+      "usbcore.autosuspend=-1" # NOTE: this prevents usb sleep during boot
+      "pcie_aspm=off" # NOTE: this sometimes helps with nvme-to-usb stability
     ];
-    initrd = {
-      # kernelModules = [
-      #   "nvme"
-      #   "uas"
-      #   "usb_storage"
-      #   "xhci_pci"
-      #   "ahci"
-      #   "sd_mod"
-      #   "vfat"
-      #   "nls_cp437"
-      #   "nls_iso8859-1"
-      # ];
 
-      # Keep these here as a fallback
-      # availableKernelModules = [
-      #   "usbhid"
-      #   "rtsx_pci_sdmmc"
-      # ];
+    initrd = {
       availableKernelModules = [
-        "nvme"
         "xhci_pci"
         "ohci_pci"
         "ehci_pci"
@@ -52,17 +33,19 @@
         "ahci"
         "uas"
         "usbhid"
-        "usb_storage"
         "sd_mod"
         "rtsx_pci_sdmmc"
       ];
+
       kernelModules = [
+        "usb_storage" # NOTE: this is to boot from external usb
         "nvme"
         "vfat"
         "nls_cp437"
         "usbhid"
         "nls_iso8859-1"
       ];
+
       luks = {
         reusePassphrases = false;
         yubikeySupport = true;
@@ -85,9 +68,10 @@
 
     loader = {
       efi = {
-        canTouchEfiVariables = false; # External drive
+        canTouchEfiVariables = false; # NOTE: nix is on external drive
         efiSysMountPoint = "/boot";
       };
+
       systemd-boot = {
         enable = true;
       };
@@ -99,14 +83,12 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware = {
-    enableAllFirmware = true;
-
     cpu.amd.updateMicrocode = lib.mkForce true;
 
     nvidia = {
       modesetting.enable = true;
       powerManagement.enable = false;
-      open = false; # Proprietary driver for gaming
+      open = false;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
@@ -118,5 +100,4 @@
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-
 }
