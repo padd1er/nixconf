@@ -13,11 +13,13 @@
 
   boot = {
     kernelModules = [ "kvm-amd" ];
+    blacklistedKernelModules = [ "nouveau" ];
     extraModulePackages = [ ];
     kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems = [ "ntfs" ];
 
     kernelParams = [
-      # "usb-storage.quirks=152d:0583:u" # nvme
+      "module_blacklist=amdgpu"
       "amd_pstate=active"
       "rootdelay=20"
       "usbcore.autosuspend=-1" # NOTE: this prevents usb sleep during boot
@@ -78,17 +80,65 @@
     };
   };
 
+  fileSystems = {
+    "/mnt/win-games" = {
+      device = "/dev/disk/by-uuid/0AAAB747AAB72E57";
+      fsType = "ntfs-3g";
+      options = [
+        "rw"
+        "uid=1000"
+        "gid=100"
+        "dmask=022"
+        "fmask=133"
+        "noatime"
+      ];
+    };
+
+    "/mnt/win-system" = {
+      device = "/dev/disk/by-uuid/80DA962BDA961E0A";
+      fsType = "ntfs-3g";
+      options = [
+        "rw"
+        "uid=1000"
+        "gid=100"
+        "dmask=022"
+        "fmask=133"
+        "noatime"
+      ];
+    };
+
+    "/mnt/win-sub-system" = {
+      device = "/dev/disk/by-uuid/B834259834255B20";
+      fsType = "ntfs-3g";
+      options = [
+        "rw"
+        "uid=1000"
+        "gid=100"
+        "dmask=022"
+        "fmask=133"
+      ];
+    };
+  };
+
   swapDevices = [ ];
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services = {
+    xserver = {
+      videoDrivers = [ "nvidia" ];
+    };
+    udisks2.enable = true;
+  };
 
   hardware = {
     cpu.amd.updateMicrocode = lib.mkForce true;
 
     nvidia = {
       modesetting.enable = true;
-      powerManagement.enable = false;
-      open = false;
+      powerManagement = {
+        enable = false;
+        finegrained = false;
+      };
+      open = true;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
