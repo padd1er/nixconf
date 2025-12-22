@@ -74,6 +74,7 @@
       dconf
       # themes
       cliphist
+      networkmanagerapplet
       fuzzel
       fuzzel-askpass
       nirius # TODO: switch to official package past 0.6.1
