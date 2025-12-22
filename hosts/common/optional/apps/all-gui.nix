@@ -25,8 +25,8 @@
     papirus-icon-theme
     rustdesk-flutter # NOTE: this is instead lf default rustdesk which is at 1.2.3 version and fails to build due to rust 1.80.0 https://github.com/NixOS/nixpkgs/issues/332957
     # NOTE: this is due to qtwebengine5-15 EOL/deprecation
-    inputs.nixpkgs-stable.legacyPackages."${pkgs.stdenv.hostPlatform.system}".seafile-client
-    # seafile-client
+    # inputs.nixpkgs-stable.legacyPackages."${pkgs.stdenv.hostPlatform.system}".seafile-client
+    seafile-client
     slack
     spotify
     telegram-desktop

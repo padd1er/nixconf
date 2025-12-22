@@ -51,7 +51,5 @@
       usbutils
     ])
     ++ (with inputs.nixpkgs-stable.legacyPackages."${pkgs.stdenv.hostPlatform.system}"; [
-
-      # delta # NOTE: this is instead lf default rustdesk which is at 1.2.3 version and fails to build due to rust 1.80.0 https://github.com/NixOS/nixpkgs/issues/332957
     ]);
 }
