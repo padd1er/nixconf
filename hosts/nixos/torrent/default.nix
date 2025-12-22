@@ -78,7 +78,7 @@
   # --- common/core/settings/settings-font.nix
 
   environment.shellAliases = lib.mkForce { };
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     brightnessctl
@@ -86,6 +86,18 @@
     coolercontrol.coolercontrold
     coolercontrol.coolercontrol-ui-data
     lm_sensors
+    # nvidia stuff
+    vulkan-tools
+    vulkan-loader
+    vulkan-validation-layers
+    mangohud
+    gamemode
+    wineWowPackages.stable
+    winetricks
+    protontricks
+    # anker camera
+    cameractrls
+    cameractrls-gtk4
   ];
 
   programs.coolercontrol.enable = true;
