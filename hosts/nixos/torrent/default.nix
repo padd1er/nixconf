@@ -80,15 +80,15 @@
   environment.shellAliases = lib.mkForce { };
   nixpkgs.config.allowUnfree = true;
 
-  # Basic packages
   environment.systemPackages = with pkgs; [
-    # telegram-desktop
-    # ghostty
+    brightnessctl
+    coolercontrol.coolercontrol-gui
+    coolercontrol.coolercontrold
+    coolercontrol.coolercontrol-ui-data
+    lm_sensors
   ];
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  programs.coolercontrol.enable = true;
 
   system.stateVersion = "25.11";
-
 }
