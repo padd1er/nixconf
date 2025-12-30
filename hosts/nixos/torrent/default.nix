@@ -12,6 +12,7 @@
     inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
     ./disko.nix
+    ./apps-extra.nix
     (map libCustom.relativeToRoot [
       "modules/common/host-spec.nix"
       "hosts/common/core"
@@ -78,31 +79,30 @@
   # --- common/core/settings/settings-font.nix
 
   environment.shellAliases = lib.mkForce { };
-  # nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    brightnessctl
-    coolercontrol.coolercontrol-gui
-    coolercontrol.coolercontrold
-    coolercontrol.coolercontrol-ui-data
-    lm_sensors
-    # nvidia stuff
-    vulkan-tools
-    vulkan-loader
-    vulkan-validation-layers
-    mangohud
-    gamemode
-    wineWowPackages.stable
-    winetricks
-    protontricks
-    # anker camera
-    cameractrls
-    cameractrls-gtk4
-    # rustdesk
-    xdg-desktop-portal-wlr
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   brightnessctl
+  #   coolercontrol.coolercontrol-gui
+  #   coolercontrol.coolercontrold
+  #   coolercontrol.coolercontrol-ui-data
+  #   lm_sensors
+  #   # nvidia stuff
+  #   vulkan-tools
+  #   vulkan-loader
+  #   vulkan-validation-layers
+  #   mangohud
+  #   gamemode
+  #   wineWowPackages.stable
+  #   winetricks
+  #   protontricks
+  #   # anker camera
+  #   cameractrls
+  #   cameractrls-gtk4
+  #   # rustdesk
+  #   xdg-desktop-portal-wlr
+  # ];
 
-  programs.coolercontrol.enable = true;
+  # programs.coolercontrol.enable = true;
 
   system.stateVersion = "25.11";
 }
