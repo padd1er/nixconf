@@ -13,6 +13,7 @@
     jujutsu
     claude-code
     nmap
+    lazyjournal
     # brightness
     brightnessctl
     # coolers and fans
@@ -43,6 +44,9 @@
     podman-tui
     podman-desktop
     winboat
+    # samba
+    samba
+    cifs-utils
   ];
   programs.coolercontrol.enable = true;
 }

@@ -81,7 +81,7 @@
   };
 
   fileSystems = {
-    "/mnt/win-games" = {
+    "/mnt/win/games" = {
       device = "/dev/disk/by-uuid/0AAAB747AAB72E57";
       fsType = "ntfs-3g";
       options = [
@@ -94,7 +94,7 @@
       ];
     };
 
-    "/mnt/win-system" = {
+    "/mnt/win/system" = {
       device = "/dev/disk/by-uuid/80DA962BDA961E0A";
       fsType = "ntfs-3g";
       options = [
@@ -107,7 +107,7 @@
       ];
     };
 
-    "/mnt/win-sub-system" = {
+    "/mnt/win/sub-system" = {
       device = "/dev/disk/by-uuid/B834259834255B20";
       fsType = "ntfs-3g";
       options = [
@@ -116,6 +116,81 @@
         "gid=100"
         "dmask=022"
         "fmask=133"
+      ];
+    };
+
+    "/mnt/ugreen-smb/public-upload" = {
+      device = "//192.168.1.5/public-upload";
+      fsType = "cifs";
+      options = [
+        "credentials=/run/secrets/rendered/ugreen-smb-user"
+        "iocharset=utf8"
+        "vers=3.1.1"
+        "uid=1000"
+        "gid=100"
+        "nofail"
+        "x-systemd.automount"
+        "_netdev"
+      ];
+    };
+
+    "/mnt/ugreen-smb/kasia" = {
+      device = "//192.168.1.5/kasia";
+      fsType = "cifs";
+      options = [
+        "credentials=/run/secrets/rendered/ugreen-smb-user"
+        "iocharset=utf8"
+        "vers=3.1.1"
+        "uid=1000"
+        "gid=100"
+        "nofail"
+        "x-systemd.automount"
+        "_netdev"
+      ];
+    };
+
+    "/mnt/ugreen-smb/moved-from-pc" = {
+      device = "//192.168.1.5/moved-from-pc";
+      fsType = "cifs";
+      options = [
+        "credentials=/run/secrets/rendered/ugreen-smb-user"
+        "iocharset=utf8"
+        "vers=3.1.1"
+        "uid=1000"
+        "gid=100"
+        "nofail"
+        "x-systemd.automount"
+        "_netdev"
+      ];
+    };
+
+    "/mnt/ugreen-smb/backup-torrent" = {
+      device = "//192.168.1.5/backup-torrent";
+      fsType = "cifs";
+      options = [
+        "credentials=/run/secrets/rendered/ugreen-smb-user"
+        "iocharset=utf8"
+        "vers=3.1.1"
+        "uid=1000"
+        "gid=100"
+        "nofail"
+        "x-systemd.automount"
+        "_netdev"
+      ];
+    };
+
+    "/mnt/ugreen-smb/backup-flashdrive" = {
+      device = "//192.168.1.5/backup-flashdrive";
+      fsType = "cifs";
+      options = [
+        "credentials=/run/secrets/rendered/ugreen-smb-user"
+        "iocharset=utf8"
+        "vers=3.1.1"
+        "uid=1000"
+        "gid=100"
+        "nofail"
+        "x-systemd.automount"
+        "_netdev"
       ];
     };
   };
