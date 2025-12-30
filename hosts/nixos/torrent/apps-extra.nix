@@ -21,32 +21,41 @@
     coolercontrol.coolercontrold
     coolercontrol.coolercontrol-ui-data
     lm_sensors
-    # nvidia stuff
-    vulkan-tools
-    vulkan-loader
-    vulkan-validation-layers
-    # gaming
-    mangohud
-    gamemode
-    wineWowPackages.stable
-    winetricks
-    protontricks
-    # anker camera
-    cameractrls
-    cameractrls-gtk4
-    # portals
-    xdg-desktop-portal-wlr
-    # devenv
-    distrobox
-    distrobox-tui
-    podman
-    podman-compose
-    podman-tui
-    podman-desktop
-    winboat
     # samba
-    samba
+    # samba
     cifs-utils
+    # gui file manager
+    # xfce.thunar
+    # xfce.thunar-volman
+    # xfce.thunar-archive-plugin
+    # xfce.tumbler
+    # gvfs
   ];
-  programs.coolercontrol.enable = true;
+
+  # services = {
+  #   gvfs = {
+  #     enable = true;
+  #   };
+  #
+  #   tumbler.enable = true;
+  #
+  #   samba = {
+  #     enable = true;
+  #     nmbd.enable = true;
+  #   };
+  #
+  # };
+  programs = {
+    coolercontrol.enable = true;
+    #
+    # xfconf.enable = true;
+    #
+    # thunar = {
+    #   enable = true;
+    #   plugins = with pkgs.xfce; [
+    #     thunar-archive-plugin
+    #     thunar-volman
+    #   ];
+    # };
+  };
 }
