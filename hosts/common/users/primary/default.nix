@@ -42,18 +42,31 @@ in
     };
   };
 
-  sops.secrets = {
-    # "private_keys/nixos_builder" = {
-    #   neededForUsers = true;
-    # };
-    "private_keys/${userName}_at_${hostName}" = {
-      mode = "0600";
-      owner = ownerUser;
-      group = ownerGroup;
-      path = "${homeDir}/.ssh/id_device";
+  sops = {
+    secrets = {
+      "private_keys/${userName}_at_${hostName}" = {
+        mode = "0600";
+        owner = ownerUser;
+        group = ownerGroup;
+        path = "${homeDir}/.ssh/id_device";
+      };
+      "user_passwords/${userName}" = {
+        neededForUsers = true;
+      };
+      "ugreen_smb_passwords/${userName}" = {
+        owner = "root";
+        mode = "0400";
+      };
     };
-    "user_passwords/${userName}" = {
-      neededForUsers = true;
+    templates = {
+      "ugreen-smb-user" = {
+        content = ''
+          username=${userName}
+          password=${config.sops.placeholder."ugreen_smb_passwords/${userName}"}
+        '';
+        owner = "root";
+        mode = "0400";
+      };
     };
   };
 
