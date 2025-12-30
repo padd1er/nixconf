@@ -74,6 +74,8 @@
       dconf
       # themes
       cliphist
+      wl-clip-persist
+      wl-clipboard
       networkmanagerapplet
       fuzzel
       fuzzel-askpass
@@ -87,6 +89,7 @@
       kdePackages.polkit-kde-agent-1
       xdg-desktop-portal-gtk
       xdg-desktop-portal-gnome
+      xdg-desktop-portal-wlr
       inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
