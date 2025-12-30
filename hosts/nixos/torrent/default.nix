@@ -98,6 +98,8 @@
     # anker camera
     cameractrls
     cameractrls-gtk4
+    # rustdesk
+    xdg-desktop-portal-wlr
   ];
 
   programs.coolercontrol.enable = true;
