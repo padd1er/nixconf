@@ -35,10 +35,8 @@
       "hosts/common/optional/apps/wezterm.nix"
       "hosts/common/optional/apps/winboat.nix"
       "hosts/common/optional/apps/yubikey.nix"
-      # # "hosts/common/optional/user-environments/xfce.nix"
       "hosts/common/optional/user-environments/greetd.nix"
       "hosts/common/optional/user-environments/niri.nix"
-      # # "hosts/common/optional/user-environments/hypr.nix"
     ])
   ];
 
