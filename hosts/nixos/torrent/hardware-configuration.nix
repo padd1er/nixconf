@@ -6,17 +6,32 @@
   ...
 }:
 
+let
+  overlays = import ../../../overlays;
+  pkgsWithAsrock = pkgs.extend overlays.asrock-nct6683;
+  kernelPackagesWithAsrock = pkgsWithAsrock.linuxPackagesFor pkgs.linuxPackages_latest.kernel;
+in
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
   boot = {
-    kernelModules = [ "kvm-amd" ];
-    blacklistedKernelModules = [ "nouveau" ];
-    extraModulePackages = [ ];
+    kernelModules = [
+      "kvm-amd"
+      "nct6683"
+    ];
+    blacklistedKernelModules = [
+      "nouveau"
+    ];
+    extraModulePackages = [ kernelPackagesWithAsrock.asrock-nct6683 ];
     kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = [ "ntfs" ];
+
+    # TODO: test if this one is needed
+    extraModprobeConfig = ''
+      options nct6683 force=1
+    '';
 
     kernelParams = [
       "module_blacklist=amdgpu"
@@ -24,6 +39,9 @@
       "rootdelay=20"
       "usbcore.autosuspend=-1" # NOTE: this prevents usb sleep during boot
       "pcie_aspm=off" # NOTE: this sometimes helps with nvme-to-usb stability
+      # NOTE: asrock x670e sensors
+      "acpi_enforce_resources=lax"
+      # "nct6683.force=1" # TODO: test if this one is needed
     ];
 
     initrd = {
@@ -179,20 +197,21 @@
       ];
     };
 
-    "/mnt/ugreen-smb/backup-flashdrive" = {
-      device = "//192.168.1.5/backup-flashdrive";
-      fsType = "cifs";
-      options = [
-        "credentials=/run/secrets/rendered/ugreen-smb-user"
-        "iocharset=utf8"
-        "vers=3.1.1"
-        "uid=1000"
-        "gid=100"
-        "nofail"
-        "x-systemd.automount"
-        "_netdev"
-      ];
-    };
+    # # TODO: find out what is this for
+    # "/mnt/ugreen-smb/backup-flashdrive" = {
+    #   device = "//192.168.1.5/backup-flashdrive";
+    #   fsType = "cifs";
+    #   options = [
+    #     "credentials=/run/secrets/rendered/ugreen-smb-user"
+    #     "iocharset=utf8"
+    #     "vers=3.1.1"
+    #     "uid=1000"
+    #     "gid=100"
+    #     "nofail"
+    #     "x-systemd.automount"
+    #     "_netdev"
+    #   ];
+    # };
   };
 
   swapDevices = [ ];
