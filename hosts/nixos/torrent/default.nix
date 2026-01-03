@@ -13,6 +13,7 @@
     ./hardware-configuration.nix
     ./disko.nix
     ./apps-extra.nix
+    ./sunshine.nix
     (map libCustom.relativeToRoot [
       "modules/common/host-spec.nix"
       "hosts/common/core"

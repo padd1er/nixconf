@@ -214,7 +214,17 @@ in
     # };
   };
 
-  swapDevices = [ ];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 20 * 1024;
+      options = [ "discard" ];
+      randomEncryption = {
+        enable = true;
+        allowDiscards = true;
+      };
+    }
+  ];
 
   services = {
     xserver = {
@@ -229,7 +239,7 @@ in
     nvidia = {
       modesetting.enable = true;
       powerManagement = {
-        enable = false;
+        enable = true;
         finegrained = false;
       };
       open = true;
