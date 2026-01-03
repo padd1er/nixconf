@@ -87,9 +87,9 @@
       swayidle
       xwayland-satellite
       kdePackages.polkit-kde-agent-1
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-wlr
+      # xdg-desktop-portal-gtk
+      # xdg-desktop-portal-gnome
+      # xdg-desktop-portal-wlr
       inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
@@ -127,7 +127,8 @@
               inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
             }/bin/noctalia-shell ipc call lockScreen lock' \
             timeout 900 '${pkgs.niri}/bin/niri msg action power-off-monitors' \
-            timeout 1800 'systemctl suspend'
+            resume '${pkgs.niri}/bin/niri msg action power-on-monitors' \
+            timeout 1800 'systemctl suspend' \
             before-sleep '${
               inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
             }/bin/noctalia-shell ipc call lockScreen lock'
@@ -146,7 +147,30 @@
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-wlr
+      pkgs.kdePackages.xdg-desktop-portal-kde
     ];
+    # config = {
+    #   common = {
+    #     default = [ "gtk" ];
+    #   };
+    #   niri = {
+    #     "org.freedesktop.impl.portal.ScreenCast" = [
+    #       "kde"
+    #       "wlr"
+    #       "gnome"
+    #     ];
+    #     "org.freedesktop.impl.portal.Screenshot" = [
+    #       "kde"
+    #       "wlr"
+    #       "gnome"
+    #     ];
+    #     "org.freedesktop.impl.portal.RemoteDesktop" = [
+    #       "kde"
+    #       "wlr"
+    #       "gnome"
+    #     ];
+    #   };
+    # };
   };
 
   services = {
