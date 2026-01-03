@@ -19,9 +19,6 @@
     nomacs
     obs-studio
     papirus-icon-theme
-    # rustdesk
-    # rustdesk-flutter
-    inputs.nixpkgs-stable.legacyPackages."${pkgs.stdenv.hostPlatform.system}".rustdesk-flutter
     seafile-client
     slack
     spotify
