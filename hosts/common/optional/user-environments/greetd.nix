@@ -6,6 +6,7 @@
 
 {
 
+  # TODO: make with dms greeter instead of tuigreet
   services = {
     greetd = {
       enable = true;
@@ -17,9 +18,9 @@
           command = ''
             ${pkgs.tuigreet}/bin/tuigreet \
               --time \
-              --asterisks \
-              --debug /tmp/tuigreet.log
+              --asterisks 
           '';
+          #               --debug /tmp/tuigreet.log
           user = "greeter";
         };
       };
