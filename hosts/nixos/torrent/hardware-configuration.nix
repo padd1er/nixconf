@@ -31,14 +31,18 @@ in
     # TODO: test if this one is needed
     extraModprobeConfig = ''
       options nct6683 force=1
+      options usb_storage quirks=152d:0583:u
     '';
 
     kernelParams = [
+      "nvidia-drm.modeset=1"
       "module_blacklist=amdgpu"
       "amd_pstate=active"
       "rootdelay=20"
       "usbcore.autosuspend=-1" # NOTE: this prevents usb sleep during boot
+      "usbcore.old_scheme_first=1"
       "pcie_aspm=off" # NOTE: this sometimes helps with nvme-to-usb stability
+      "mem_sleep_default=s2idle"
       # NOTE: asrock x670e sensors
       "acpi_enforce_resources=lax"
       # "nct6683.force=1" # TODO: test if this one is needed
