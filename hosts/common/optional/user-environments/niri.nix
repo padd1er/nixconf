@@ -56,8 +56,10 @@
 
     sessionVariables = {
       SSH_ASKPASS = lib.mkForce "${pkgs.fuzzel-askpass}/bin/fuzzel-askpass";
-      # WLR_NO_HARDWARE_CURSORS = "1";
+      WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
+      GBM_BACKEND = "nvidia-drm";
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     };
 
     systemPackages = with pkgs; [
