@@ -80,17 +80,14 @@
       fuzzel
       fuzzel-askpass
       nirius # TODO: switch to official package past 0.6.1
-      # swaylock # NOTE: using quickshell noctalia
-      # mako # NOTE: using quickshell noctalia
       kanshi
       libnotify
       swayidle
+      swaylock
+      swaybg
       xwayland-satellite
-      kdePackages.polkit-kde-agent-1
-      # xdg-desktop-portal-gtk
-      # xdg-desktop-portal-gnome
-      # xdg-desktop-portal-wlr
-      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+      # kdePackages.polkit-kde-agent-1
+      # inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
 
@@ -100,44 +97,19 @@
 
   systemd.user.services = {
 
-    polkit-authentication-agent = {
-      description = "Polkit Authentication Agent";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-      };
-    };
-
-    swayidle = {
-      description = "Idle Service";
-      path = with pkgs; [
-        swayidle
-        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-        niri
-      ];
-      serviceConfig = {
-        ExecStart = ''
-          ${pkgs.swayidle}/bin/swayidle -w \
-            timeout 600 '${
-              inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-            }/bin/noctalia-shell ipc call lockScreen lock' \
-            timeout 900 '${pkgs.niri}/bin/niri msg action power-off-monitors' \
-            resume '${pkgs.niri}/bin/niri msg action power-on-monitors' \
-            timeout 1800 'systemctl suspend' \
-            before-sleep '${
-              inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-            }/bin/noctalia-shell ipc call lockScreen lock'
-        '';
-        Restart = "on-failure";
-      };
-      wantedBy = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-    };
+    # TODO: make as a service per shell
+    # polkit-authentication-agent = {
+    #   description = "Polkit Authentication Agent";
+    #   wantedBy = [ "graphical-session.target" ];
+    #   wants = [ "graphical-session.target" ];
+    #   after = [ "graphical-session.target" ];
+    #   serviceConfig = {
+    #     Type = "simple";
+    #     ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+    #     Restart = "on-failure";
+    #     RestartSec = 1;
+    #   };
+    # };
   };
 
   xdg.portal = {
@@ -147,7 +119,7 @@
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-wlr
-      pkgs.kdePackages.xdg-desktop-portal-kde
+      # pkgs.kdePackages.xdg-desktop-portal-kde
     ];
     # config = {
     #   common = {
@@ -182,23 +154,5 @@
       gcr-ssh-agent.enable = false;
       gnome-keyring.enable = false;
     };
-
-    # greetd = {
-    #   enable = true;
-    #   settings = {
-    #     terminal = {
-    #       vt = lib.mkForce 7;
-    #     };
-    #     default_session = {
-    #       command = ''
-    #         ${pkgs.tuigreet}/bin/tuigreet \
-    #           --time \
-    #           --asterisks \
-    #           --debug /tmp/tuigreet.log
-    #       '';
-    #       user = "greeter";
-    #     };
-    #   };
-    # };
   };
 }
