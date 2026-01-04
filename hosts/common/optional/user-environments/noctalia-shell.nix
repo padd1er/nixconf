@@ -23,7 +23,7 @@
         Type = "simple";
         ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
         Restart = "on-failure";
-        RestartSec = 1;
+        RestartSec = 3;
       };
     };
 
@@ -35,10 +35,12 @@
         niri
       ];
       serviceConfig = {
+        Type = "simple";
         ExecStart = ''
-          ${pkgs.swayidle}/bin/swayidle -w -C ~/.config/swayidle/config-niri-noctalia
+          ${pkgs.swayidle}/bin/swayidle -w -C %h/.config/swayidle/config-niri-noctalia
         '';
         Restart = "on-failure";
+        RestartSec = 3;
       };
       wantedBy = [ "graphical-session.target" ];
       after = [ "graphical-session.target" ];
