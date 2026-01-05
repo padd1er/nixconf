@@ -20,6 +20,7 @@
     coolercontrol.coolercontrol-gui
     coolercontrol.coolercontrold
     coolercontrol.coolercontrol-ui-data
+    netflix
     lm_sensors
     # samba
     # samba
