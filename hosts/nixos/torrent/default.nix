@@ -55,6 +55,13 @@
 
   networking.hostName = "${config.hostSpec.name}-nixos";
 
+  environment = {
+    sessionVariables = {
+      GBM_BACKEND = "nvidia-drm";
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    };
+  };
+
   # +++ common/core/settings/settings-font.nix
   # # system font
   # fonts = {
