@@ -4,28 +4,34 @@
 }:
 
 {
-  services.desktopManager.gnome.enable = true;
+  services = {
+    desktopManager.gnome.enable = true;
 
-  services.displayManager = {
-    defaultSession = "gnome";
-    gdm.enable = true;
+    displayManager = {
+      defaultSession = "gnome";
+      gdm.enable = true;
+    };
+
+    dbus.packages = with pkgs; [ gnome2.GConf ];
+
+    sysprof.enable = true;
+
+    # TODO: temp error fix, work on later
+    gnome.gcr-ssh-agent.enable = false;
   };
 
-  environment.gnome.excludePackages = (
-    with pkgs;
-    [
-      epiphany
-      baobab
-      evince
-      geary
-      gnome-connections
-      gnome-tour
-      orca
-      simple-scan
-      yelp
-      gnome-software
-    ]
-  );
+  environment.gnome.excludePackages = with pkgs; [
+    epiphany
+    baobab
+    evince
+    geary
+    gnome-connections
+    gnome-tour
+    orca
+    simple-scan
+    yelp
+    gnome-software
+  ];
 
   environment.systemPackages = with pkgs; [
     adwaita-icon-theme
@@ -34,12 +40,6 @@
     gnome-settings-daemon
     sysprof
   ];
-
-  services.dbus.packages = with pkgs; [ gnome2.GConf ];
-  services.sysprof.enable = true;
-
-  # TODO: temp error fix, work on later
-  services.gnome.gcr-ssh-agent.enable = false;
 
   programs.dconf = {
     enable = true;

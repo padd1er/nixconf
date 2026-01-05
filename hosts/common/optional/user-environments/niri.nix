@@ -1,6 +1,5 @@
 {
   lib,
-  inputs,
   pkgs,
   overlays,
   ...
@@ -58,8 +57,6 @@
       SSH_ASKPASS = lib.mkForce "${pkgs.fuzzel-askpass}/bin/fuzzel-askpass";
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
-      GBM_BACKEND = "nvidia-drm";
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     };
 
     systemPackages = with pkgs; [
@@ -88,30 +85,11 @@
       swaylock
       swaybg
       xwayland-satellite
-      # kdePackages.polkit-kde-agent-1
-      # inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
 
   hardware = {
     graphics.enable = true;
-  };
-
-  systemd.user.services = {
-
-    # TODO: make as a service per shell
-    # polkit-authentication-agent = {
-    #   description = "Polkit Authentication Agent";
-    #   wantedBy = [ "graphical-session.target" ];
-    #   wants = [ "graphical-session.target" ];
-    #   after = [ "graphical-session.target" ];
-    #   serviceConfig = {
-    #     Type = "simple";
-    #     ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
-    #     Restart = "on-failure";
-    #     RestartSec = 1;
-    #   };
-    # };
   };
 
   xdg.portal = {
@@ -121,7 +99,6 @@
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-wlr
-      # pkgs.kdePackages.xdg-desktop-portal-kde
     ];
     # config = {
     #   common = {
@@ -148,7 +125,12 @@
   };
 
   services = {
-    displayManager.sessionPackages = [ pkgs.niri ];
+    displayManager = {
+      sessionPackages = [ pkgs.niri ];
+      dms-greeter = {
+        compositor.name = "niri";
+      };
+    };
 
     power-profiles-daemon.enable = true;
 

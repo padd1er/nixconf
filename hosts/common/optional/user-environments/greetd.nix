@@ -5,8 +5,6 @@
 }:
 
 {
-
-  # TODO: make with dms greeter instead of tuigreet
   services = {
     greetd = {
       enable = true;
