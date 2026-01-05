@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   ...
 }:
@@ -28,15 +29,37 @@
   };
 
   environment = {
+    variables = {
+      QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3";
+    };
+
+    sessionVariables = {
+      QT_QPA_PLATFORM = "wayland";
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    };
+
     systemPackages = with pkgs; [
       dgop
+      i2c-tools
     ];
   };
 
   systemd.user.services = {
+    dms = {
+      description = "DankMaterialShell";
+      partOf = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      wantedBy = [ "graphical-session.target" ];
+      restartIfChanged = true;
+      serviceConfig = {
+        # ExecStart = "dms run --session";
+        ExecStart = "dms run --session --config %h/.config/DankMaterialShell/torrent/";
+        Restart = "on-failure";
+      };
+    };
+
     swayidle = {
       description = "Idle Service";
-      documentation = "man:swayidle(1)";
       path = with pkgs; [
         swayidle
         niri

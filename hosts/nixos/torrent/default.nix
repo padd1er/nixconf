@@ -14,7 +14,6 @@
     ./disko.nix
     ./apps-extra.nix
     ./sunshine.nix
-    # ./flatpak.nix
     (map libCustom.relativeToRoot [
       "modules/common/host-spec.nix"
       "hosts/common/core"
@@ -38,9 +37,8 @@
       "hosts/common/optional/apps/winboat.nix"
       "hosts/common/optional/apps/yubikey.nix"
       # "hosts/common/optional/apps/rustdesk.nix"
-      "hosts/common/optional/user-environments/greetd.nix"
-      "hosts/common/optional/user-environments/niri.nix"
-      "hosts/common/optional/user-environments/noctalia-shell.nix"
+      # "hosts/common/optional/user-environments/niri-noctalia.nix"
+      "hosts/common/optional/user-environments/niri-dank.nix"
     ])
   ];
 
