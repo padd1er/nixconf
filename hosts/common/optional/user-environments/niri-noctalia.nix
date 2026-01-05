@@ -37,7 +37,6 @@
 
     swayidle = {
       description = "Idle Service";
-      documentation = "man:swayidle(1)";
       path = with pkgs; [
         swayidle
         niri
