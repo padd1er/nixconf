@@ -85,6 +85,7 @@
       swaylock
       swaybg
       xwayland-satellite
+      i2c-tools
     ];
   };
 

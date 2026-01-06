@@ -8,6 +8,7 @@
   imports = [
     ./greetd.nix
     ./niri.nix
+    inputs.noctalia.nixosModules.default
   ];
 
   environment = {
@@ -16,6 +17,8 @@
       inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
+
+  services.noctalia-shell.enable = true;
 
   systemd.user.services = {
 
