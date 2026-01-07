@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   ...
 }:
@@ -20,28 +21,31 @@
     mangohud
     goverlay
     gamescope
-    gamemode
+    gamescope-wsi
+    # gamemode
     wineWowPackages.stable
     winetricks
     vulkan-tools
     vulkan-loader
     vulkan-validation-layers
+    inputs.scopebuddy.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   programs = {
     steam = {
       enable = true;
-      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
     };
 
     gamescope = {
       enable = true;
+      # capSysNice = true;
     };
 
-    gamemode = {
-      enable = true;
-    };
+    # gamemode = {
+    #   enable = true;
+    # };
   };
 }
