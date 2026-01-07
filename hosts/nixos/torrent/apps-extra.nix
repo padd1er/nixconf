@@ -17,9 +17,12 @@
     # brightness
     brightnessctl
     # coolers and fans
-    coolercontrol.coolercontrol-gui
-    coolercontrol.coolercontrold
-    coolercontrol.coolercontrol-ui-data
+    # coolercontrol.coolercontrol-gui
+    # coolercontrol.coolercontrold
+    # coolercontrol.coolercontrol-ui-data
+    discord
+    discord-gamesdk
+    discord-rpc
     netflix
     lm_sensors
     # samba
