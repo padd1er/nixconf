@@ -91,29 +91,5 @@
 
   environment.shellAliases = lib.mkForce { };
 
-  # environment.systemPackages = with pkgs; [
-  #   brightnessctl
-  #   coolercontrol.coolercontrol-gui
-  #   coolercontrol.coolercontrold
-  #   coolercontrol.coolercontrol-ui-data
-  #   lm_sensors
-  #   # nvidia stuff
-  #   vulkan-tools
-  #   vulkan-loader
-  #   vulkan-validation-layers
-  #   mangohud
-  #   gamemode
-  #   wineWowPackages.stable
-  #   winetricks
-  #   protontricks
-  #   # anker camera
-  #   cameractrls
-  #   cameractrls-gtk4
-  #   # rustdesk
-  #   xdg-desktop-portal-wlr
-  # ];
-
-  # programs.coolercontrol.enable = true;
-
   system.stateVersion = "25.11";
 }
