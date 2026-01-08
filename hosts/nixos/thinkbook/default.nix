@@ -11,9 +11,6 @@
   # TODO: add hardware for amd
   # TODO: review hardware options
   # TODO: tweak for minimal steam gaming
-  # TODO: setup hyprland environment
-  # TODO: setup kde environment
-  # TODO: setup niri qith quickshell
   imports = lib.flatten [
     inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
@@ -91,6 +88,11 @@
   };
 
   networking.hostName = "${config.hostSpec.name}-nixos";
+
+  # TODO: this is a hack for ncspot to work, move it somewhere
+  networking.hosts = {
+    "0.0.0.0" = [ "apresolve.spotify.com" ];
+  };
 
   services.libinput.enable = true;
 
