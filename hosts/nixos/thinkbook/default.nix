@@ -30,6 +30,7 @@
       "hosts/common/optional/apps/all-gui.nix"
       "hosts/common/optional/apps/qmk.nix"
       "hosts/common/optional/apps/gaming.nix"
+      "hosts/common/optional/apps/chatting.nix"
       "hosts/common/optional/apps/libreoffice.nix"
       "hosts/common/optional/apps/wezterm.nix"
       "hosts/common/optional/apps/piper-tts.nix"
