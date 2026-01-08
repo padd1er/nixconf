@@ -22,6 +22,7 @@
     goverlay
     gamescope
     gamescope-wsi
+    # TODO: think about it
     # gamemode
     wineWowPackages.stable
     winetricks
