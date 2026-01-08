@@ -1,7 +1,7 @@
 final: prev: {
   easyeffects = prev.easyeffects.overrideAttrs (oldAttrs: {
     nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [
-      prev.wrapGAppsHook
+      prev.wrapGAppsHook3
     ];
 
     buildInputs = (oldAttrs.buildInputs or [ ]) ++ [
