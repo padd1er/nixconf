@@ -34,6 +34,7 @@
     # xfce.thunar-archive-plugin
     # xfce.tumbler
     # gvfs
+    nvidia-vaapi-driver
   ];
 
   # services = {

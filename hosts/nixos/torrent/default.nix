@@ -33,6 +33,7 @@
       "hosts/common/optional/apps/piper-tts.nix"
       "hosts/common/optional/apps/qmk.nix"
       "hosts/common/optional/apps/thunar.nix"
+      "hosts/common/optional/apps/obs-studio.nix"
       "hosts/common/optional/apps/wezterm.nix"
       "hosts/common/optional/apps/winboat.nix"
       "hosts/common/optional/apps/yubikey.nix"
