@@ -45,7 +45,6 @@ in
       "mem_sleep_default=s2idle"
       # NOTE: asrock x670e sensors
       "acpi_enforce_resources=lax"
-      # "nct6683.force=1" # TODO: test if this one is needed
     ];
 
     initrd = {
@@ -257,5 +256,7 @@ in
     };
   };
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs = {
+    hostPlatform = lib.mkDefault "x86_64-linux";
+  };
 }
