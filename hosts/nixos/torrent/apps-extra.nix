@@ -1,4 +1,5 @@
 {
+  overlays,
   pkgs,
   ...
 }:
@@ -6,6 +7,9 @@
 {
 
   imports = [
+  ];
+  nixpkgs.overlays = [
+    overlays.easyeffects
   ];
 
   environment.systemPackages = with pkgs; [
@@ -35,6 +39,7 @@
     # xfce.tumbler
     # gvfs
     nvidia-vaapi-driver
+    easyeffects
   ];
 
   # services = {
