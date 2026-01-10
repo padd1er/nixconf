@@ -1,18 +1,28 @@
 {
   lib,
+  pkgs,
   ...
 }:
 
 {
 
-  services.xserver.xkb.layout = "pl-bel";
-  services.xserver.xkb.options = "lv3:ralt_switch";
-  services.xserver.xkb.extraLayouts.pl-bel = {
-    description = "PL layout with Belarusian symbols";
-    languages = [ "pl" ];
-    symbolsFile = ./keyboard-layout-symbols/pl-bel;
+  services = {
+    xserver = {
+      xkb = {
+        layout = "pl-bel,ru";
+        options = "lv3:ralt_switch,grp:alt_space_toggle";
+        extraLayouts.pl-bel = {
+          description = "PL layout with Belarusian symbols";
+          languages = [ "pl" ];
+          symbolsFile = ./keyboard-layout-symbols/pl-bel;
+        };
+      };
+
+      exportConfiguration = lib.mkForce true;
+    };
   };
-  services.xserver.exportConfiguration = lib.mkForce true;
+
+  services.dbus.packages = [ pkgs.xkeyboard_config ];
 
   # programs.dconf = {
   #   enable = true;
