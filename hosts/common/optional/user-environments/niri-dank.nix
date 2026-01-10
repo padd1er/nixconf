@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -14,11 +15,13 @@
   programs = {
     dms-shell = {
       enable = true;
+      package = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
       quickshell.package = pkgs.quickshell;
       systemd = {
         enable = true;
         restartIfChanged = true;
       };
+      enableDynamicTheming = false;
     };
 
     dsearch = {
