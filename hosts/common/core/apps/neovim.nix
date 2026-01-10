@@ -29,7 +29,8 @@
     marksman
     neovim
     nixd
-    nixfmt-rfc-style
+    # nixfmt-rfc-style # NOTE: renamed to nixfmt
+    nixfmt
     statix
     # TODO: remove "if" when prettier goes stable
     (if lib.hasAttr "prettier" pkgs then prettier else nodePackages.prettier)
