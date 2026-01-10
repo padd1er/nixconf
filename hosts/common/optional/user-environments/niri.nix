@@ -7,8 +7,10 @@
 
 {
   # TODO: work on themes and styling, check with hyprland
+
   nixpkgs.overlays = [
     overlays.fuzzel-askpass
+    # TODO: switch to official package after 0.6.2+
     overlays.nirius
   ];
 
@@ -78,7 +80,7 @@
       networkmanagerapplet
       fuzzel
       fuzzel-askpass
-      nirius # TODO: switch to official package past 0.6.1
+      nirius
       kanshi
       libnotify
       swayidle
