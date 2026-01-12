@@ -7,7 +7,12 @@
   # system font
   fonts = {
     fontDir.enable = true;
-    packages = with pkgs; [ nerd-fonts.hack ];
+    packages = with pkgs; [
+      nerd-fonts.hack
+      noto-fonts
+      noto-fonts-lgc-plus
+      noto-fonts-cjk-sans
+    ];
     fontconfig = {
       enable = true;
       defaultFonts.monospace = [ "Hack Nerd Font Mono" ];
