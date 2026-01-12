@@ -102,7 +102,21 @@
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-xapp
+      pkgs.xdg-desktop-portal-shana
+      pkgs.xdg-desktop-portal-luminous
+      pkgs.lxqt.xdg-desktop-portal-lxqt
+      pkgs.kdePackages.xdg-desktop-portal-kde
+      pkgs.pantheon.xdg-desktop-portal-pantheon
     ];
+    config = {
+      common = {
+        default = [ "gtk" ];
+      };
+      niri = {
+        "org.freedesktop.impl.portal.FileChooser" = [ "lxqt" ];
+      };
+    };
     # config = {
     #   common = {
     #     default = [ "gtk" ];
