@@ -51,25 +51,16 @@
   systemd.user.services = {
     swayidle = {
       description = "Idle Service";
-      path = with pkgs; [
-        dms-shell
-        swayidle
-        niri
-      ];
+      # path = with pkgs; [
+      #   swayidle
+      #   niri
+      #   inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default
+      # ];
+      # TODO: this is temp due to dms naming /nix/store/dq46w55g0wqyrrvgvh8vi286d2458dil-dms-shell-1.2-unstable+date=2026-01-10_c60cd3a
+      path = lib.mkForce [ ];
       serviceConfig = {
         Type = "simple";
-        ExecStart = ''
-          ${pkgs.swayidle}/bin/swayidle -w \
-            timeout 600 '${
-              inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default
-            }/bin/dms ipc call lock lock' \
-            timeout 900 '${pkgs.niri}/bin/niri msg action power-off-monitors' \
-              resume '${pkgs.niri}/bin/niri msg action power-on-monitors' \
-            timeout 1800 'systemctl suspend' \
-            before-sleep '${
-              inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default
-            }/bin/dms ipc call lock lock'
-        '';
+        ExecStart = "${pkgs.swayidle}/bin/swayidle -w timeout 600 'dms ipc call lock lock' timeout 900 'niri msg action power-off-monitors' resume 'niri msg power-on-monitors' timeout 1800 'systemctl suspend' before-sleep 'dms ipc call lock lock'";
         Restart = "on-failure";
       };
       wantedBy = [ "graphical-session.target" ];
