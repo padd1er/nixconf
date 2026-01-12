@@ -37,6 +37,7 @@
       "hosts/common/optional/apps/wezterm.nix"
       "hosts/common/optional/apps/winboat.nix"
       "hosts/common/optional/apps/yubikey.nix"
+      "hosts/common/optional/apps/ai.nix"
       # "hosts/common/optional/apps/rustdesk.nix"
       # "hosts/common/optional/user-environments/niri-noctalia.nix"
       "hosts/common/optional/user-environments/niri-dank.nix"
