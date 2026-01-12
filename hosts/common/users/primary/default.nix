@@ -36,6 +36,7 @@ in
         "input"
         "docker"
         "plugdev"
+        "i2c"
       ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = lib.lists.forEach authorizedKeys (key: builtins.readFile key);
