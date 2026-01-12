@@ -10,5 +10,6 @@
     claude-monitor
     opencode
     gemini-cli
+    codex
   ];
 }
